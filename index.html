@@ -5,48 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan Bureau</title>
     <link rel="stylesheet" href="style.css">
-  
 </head>
 <body>
     <div class="container">
-      
         <div class="sidebar">
             <h2>Personnel Non Assigné</h2>
             <button class="add-btn">Ajouter Employé</button>
-           
+            <div id="staff-list-container">
+                
+            </div>
         </div>
 
-       
         <div class="main-area">
-            <h1 style="text-align: center; color: brown;">Plan d'Étage</h1>
+            <h1>Plan d'Étage</h1>
             <div class="floor-plan">
-                <div class="zone a">
+                <div class="zone salle_conference">
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone b">
+                <div class="zone reception">
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone c">
+                <div class="zone salle_serveurs">
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone d">
+                <div class="zone salle_securite">
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone e">
+                <div class="zone salle_personnel">
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone f">
-                    <div class="staff-here"></div>
-                </div>
-                <div class="zone g">
-                    <div class="staff-here"></div>
-                </div>
-                <div class="zone h">
+                <div class="zone salle_archives">
                     <div class="staff-here"></div>
                 </div>
             </div>
         </div>
     </div>
 
+ 
+    <div id="addEmployeeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ajouter un Nouvel Employé</h2>
+            <form id="employeeForm">
+               
+            </form>
+        </div>
+    </div>
+
+   
+    <div id="profileModal" class="profile-modal">
+        <div class="profile-content">
+            <span class="close-profile">&times;</span>
+            <div class="profile-header">
+                <img id="profilePhoto" src="" alt="Photo de profil">
+                <div class="profile-details">
+                    <h2 id="profileName"></h2>
+                    <p id="profileEmail"></p>
+                    <p id="profilePhone"></p>
+                    <span id="profileRole" class="role-badge"></span>
+                </div>
+            </div>
+            <div class="profile-experiences">
+                <h4>Expériences</h4>
+                <div id="profileExperiences" class="experience-list">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
