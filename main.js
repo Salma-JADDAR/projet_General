@@ -3,101 +3,77 @@ let tousLesEmployes = [
     {id: 1, nom: "salma JADDAR", role: "Développeur", photo: "images/SALMA.PNG", email: "SALMA@entreprise.com", telephone: "+33 1 23 45 67 89", experiences: ["JavaScript", "React"], zoneAssignee: null},
     {id: 2, nom: "Ilyass ABSI", role: "Designer", photo: "images/jean.PNG", email: "Ilyass@entreprise.com", telephone: "+33 1 34 56 78 90", experiences: ["Figma", "UX"], zoneAssignee: null},
     {id: 3, nom: "Rayhana BENSATRA", role: "Manager", photo: "images/rayhana.PNG", email: "Rayhana@entreprise.com", telephone: "+33 1 45 67 89 01", experiences: ["Gestion"], zoneAssignee: null},
-    {id: 4, nom: "Ibrahim RZIQUI", role: "Marketing", photo: "images/ibrahim.PNG", email: "Ibrahim@entreprise.com", telephone: "+33 1 56 78 90 12", experiences: ["SEO"], zoneAssignee: "salle_conference"}
+    {id: 4, nom: "Ibrahim RZIQUI", role: "Marketing", photo: "images/ibrahim.PNG", email: "Ibrahim@entreprise.com", telephone: "+33 1 56 78 90 12", experiences: ["SEO"], zoneAssignee: "a"},
+    {id: 5, nom: "Salim JADDAR", role: "Commercial", photo: "images/ibrahim.PNG", email: "Ibrahim@entreprise.com", telephone: "+33 1 56 78 90 12", experiences: ["SEO"], zoneAssignee:  null},
+    {id: 6, nom: "Salouma", role: "Commercial", photo: "images/ibrahim.PNG", email: "Ibrahim@entreprise.com", telephone: "+33 1 56 78 90 12", experiences: ["SEO"], zoneAssignee:  null}
 ];
 
 // Tableau global pour tous les zones
 let toutesLesZones = [
     {
-        id: "salle_conference",
+        id: "a",
         nom: "Salle de conférence",
         rolesAutorises: ["Manager", "Développeur", "Designer", "Marketing", "Commercial", "Réceptionniste", "Technicien IT", "Agent de sécurité", "Nettoyage"],
         capaciteMax: 20,
         description: "Salle pour les réunions et présentations"
     },
     {
-        id: "reception", 
+        id: "b", 
         nom: "Réception",
         rolesAutorises: ["Réceptionniste", "Manager"],
         capaciteMax: 2,
         description: "Zone d'accueil des visiteurs"
     },
     {
-        id: "salle_serveurs",
+        id: "c",
         nom: "Salle des serveurs", 
         rolesAutorises: ["Technicien IT", "Manager"],
         capaciteMax: 2,
         description: "Salle technique contenant les serveurs"
     },
     {
-        id: "salle_securite",
+        id: "d",
         nom: "Salle de sécurité",
         rolesAutorises: ["Agent de sécurité", "Manager"],
         capaciteMax: 3,
         description: "Poste de contrôle de sécurité"
     },
     {
-        id: "salle_personnel",
+        id: "e",
         nom: "Salle du personnel",
         rolesAutorises: ["Manager", "Développeur", "Designer", "Marketing", "Commercial", "Réceptionniste", "Technicien IT", "Agent de sécurité", "Nettoyage"],
         capaciteMax: 15,
         description: "Espace détente pour le personnel"
     },
     {
-        id: "salle_archives",
+        id: "f",
         nom: "Salle d'archives",
         rolesAutorises: ["Manager", "Développeur", "Designer", "Marketing", "Commercial", "Réceptionniste", "Technicien IT", "Agent de sécurité"],
         capaciteMax: 5,
         description: "Salle de stockage des archives"
+    },
+    {
+        id: "g",
+        nom: "Bureau Manager",
+        rolesAutorises: ["Manager"],
+        capaciteMax: 1,
+        description: "Bureau du manager"
+    },
+    {
+        id: "h",
+        nom: "Salle de réunion",
+        rolesAutorises: ["Manager", "Développeur", "Designer", "Marketing", "Commercial"],
+        capaciteMax: 8,
+        description: "Salle de réunion d'équipe"
     }
 ];
 
-// 1. Fonction pour ajouter un employé
-function ajouterEmploye(nom, role, photo, email, telephone, experiences) {
-    let nVId = 1;
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        if (tousLesEmployes[i].id >= nouvelId) {
-            nVId = tousLesEmployes[i].id + 1;
-        }
-    }
-    
-    let nouvelEmploye = {
-        id: nouvelId,
-        nom: nom,
-        role: role,
-        photo: photo,
-        email: email,
-        telephone: telephone,
-        experiences: experiences,
-        zoneAssignee: null
-    };
-    
-    tousLesEmployes.push(nouvelEmploye);
-    return nouvelEmploye;
+// Fonction pour basculer l'état actif d'une zone
+function toggleZone(zoneElement) {
+    zoneElement.classList.toggle('active');
 }
 
-// 2. Fonction pour supprimer un employé
-function supprimerEmploye(id) {
-    let nouveauTableau = [];
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        if (tousLesEmployes[i].id !== id) {
-            nouveauTableau.push(tousLesEmployes[i]);
-        }
-    }
-    tousLesEmployes = nouveauTableau;
-}
-
-// 3. Fonction pour rechercher par ID
-function rechercherParId(id) {
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        if (tousLesEmployes[i].id === id) {
-            return tousLesEmployes[i];
-        }
-    }
-    return null;
-}
-
-// 4. Fonction pour obtenir tous les employés non assignés
+// Fonction pour obtenir les employés non assignés
 function getEmployesNonAssignes() {
     let nonAssignes = [];
     for (let i = 0; i < tousLesEmployes.length; i++) {
@@ -108,201 +84,17 @@ function getEmployesNonAssignes() {
     return nonAssignes;
 }
 
-// 5. Fonction pour obtenir les employés d'une zone spécifique
-function getEmployesParZone(zoneId) {
-    let employesZone = [];
+// Fonction pour rechercher par ID
+function rechercherParId(id) {
     for (let i = 0; i < tousLesEmployes.length; i++) {
-        if (tousLesEmployes[i].zoneAssignee === zoneId) {
-            employesZone.push(tousLesEmployes[i]);
+        if (tousLesEmployes[i].id === id) {
+            return tousLesEmployes[i];
         }
     }
-    return employesZone;
+    return null;
 }
 
-// 6. Fonction pour assigner un employé à une zone
-function assignerEmployeAZone(employeId, zoneId) {
-    let employe = rechercherParId(employeId);
-    if (!employe) return false;
-    
-   
-    if (!estRoleAutorise(employe.role, zoneId)) {
-        console.log("Accès interdit: " + employe.role + " ne peut pas accéder à " + zoneId);
-        return false;
-    }
-    
-    if (getCapaciteRestante(zoneId) <= 0) {
-        console.log("Capacité maximale atteinte pour " + zoneId);
-        return false;
-    }
-    
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        if (tousLesEmployes[i].id === employeId) {
-            tousLesEmployes[i].zoneAssignee = zoneId;
-            console.log(employe.nom + " assigné à " + zoneId);
-            return true;
-        }
-    }
-    return false;
-}
-
-// 7. Fonction pour retirer un employé d'une zone
-function retirerEmployeDeZone(employeId) {
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        if (tousLesEmployes[i].id === employeId) {
-            tousLesEmployes[i].zoneAssignee = null;
-            return true;
-        }
-    }
-    return false;
-}
-
-// 8. Fonction pour afficher tous les employés (pour debug)
-function afficherTousLesEmployes() {
-    console.log("=== LISTE DE TOUS LES EMPLOYÉS ===");
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        let emp = tousLesEmployes[i];
-        console.log("ID: " + emp.id + ", Nom: " + emp.nom + ", Rôle: " + emp.role + ", Zone: " + (emp.zoneAssignee || "Non assigné"));
-    }
-}
-
-// 9. Fonction pour tester la possibility de chaque employer
-function estRoleAutorise(roleEmploye, zoneId) {
-   
-    if (roleEmploye === "Manager") {
-        return true;
-    }
-    
-   
-    if (roleEmploye === "Nettoyage" && zoneId === "salle_archives") {
-        return false;
-    }
-    
-    for (let i = 0; i < toutesLesZones.length; i++) {
-        if (toutesLesZones[i].id === zoneId) {
-            let rolesAutorises = toutesLesZones[i].rolesAutorises;
-            for (let j = 0; j < rolesAutorises.length; j++) {
-                if (rolesAutorises[j] === roleEmploye) {
-                    return true;
-                }
-            }
-        }
-    }
-    return false;
-}
-
-// 10. Fonction pour tester la capaciter de chaque zone
-function getCapaciteRestante(zoneId) {
-    let employesDansZone = getEmployesParZone(zoneId);
-    for (let i = 0; i < toutesLesZones.length; i++) {
-        if (toutesLesZones[i].id === zoneId) {
-            return toutesLesZones[i].capaciteMax - employesDansZone.length;
-        }
-    }
-    return 0;
-}
-
-// 11. Fonction les info d'une zone
-function afficherInfoZone(zoneId) {
-    for (let i = 0; i < toutesLesZones.length; i++) {
-        if (toutesLesZones[i].id === zoneId) {
-            let zone = toutesLesZones[i];
-            console.log("=== " + zone.nom + " ===");
-            console.log("Rôles autorisés: " + zone.rolesAutorises.join(", "));
-            console.log("Capacité: " + getEmployesParZone(zoneId).length + "/" + zone.capaciteMax);
-            console.log("Description: " + zone.description);
-            console.log("Accès restreint: " + (zone.rolesAutorises.length < 9 ? "OUI" : "NON"));
-        }
-    }
-}
-
-// 12. Fonction pour afficher tous les zones 
-function afficherToutesLesZones() {
-    console.log("=== LISTE DES 6 ZONES ===");
-    for (let i = 0; i < toutesLesZones.length; i++) {
-        let zone = toutesLesZones[i];
-        console.log((i+1) + ". " + zone.nom + " (" + getEmployesParZone(zone.id).length + "/" + zone.capaciteMax + ")");
-    }
-}
-
-// 13. Fonctions pour gérer le modal
-function ouvrirModal() {
-    document.getElementById('addEmployeeModal').style.display = 'block';
-    document.getElementById('employeeForm').reset();
-}
-
-function fermerModal() {
-    document.getElementById('addEmployeeModal').style.display = 'none';
-}
-
-function soumettreFormulaire(event) {
-    event.preventDefault();
-        const nom = document.getElementById('employeeName').value;
-    const role = document.getElementById('employeeRole').value;
-    const photo = document.getElementById('employeePhoto').value || 'images/default.jpg';
-    const email = document.getElementById('employeeEmail').value;
-    const telephone = document.getElementById('employeePhone').value;
-    const experiences = document.getElementById('employeeExperiences').value.split(',').map(exp => exp.trim()).filter(exp => exp !== '');
-    
-   
-    const nouvelEmploye = ajouterEmploye(nom, role, photo, email, telephone, experiences);
-    
-    console.log("Nouvel employé ajouté:", nouvelEmploye);
-    afficherTousLesEmployes();
-    
-
-    fermerModal();
-    afficherEmployesNonAssignes();
-}
-
-function afficherEmployesNonAssignes() {
-    const container = document.getElementById('staff-list-container');
-    const nonAssignes = getEmployesNonAssignes();
-    
-    container.innerHTML = '';
-    
-    for (let i = 0; i < nonAssignes.length; i++) {
-        const employe = nonAssignes[i];
-        const employeElement = document.createElement('div');
-        employeElement.className = 'staff-item';
-        employeElement.innerHTML = `
-            <strong>${employe.nom}</strong><br>
-            <small>${employe.role}</small>
-        `;
-        container.appendChild(employeElement);
-    }
-}
-document.addEventListener('DOMContentLoaded', function() {
-    const addButton = document.querySelector('.add-btn');
-    const modal = document.getElementById('addEmployeeModal');
-    const closeBtn = document.querySelector('.close');
-    const cancelBtn = document.querySelector('.cancel-btn');
-    const form = document.getElementById('employeeForm');
-    
- 
-    addButton.addEventListener('click', ouvrirModal);
-    
-
-    closeBtn.addEventListener('click', fermerModal);
-    cancelBtn.addEventListener('click', fermerModal);
-    
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            fermerModal();
-        }
-    });
-    
-
-    form.addEventListener('submit', soumettreFormulaire);
-    
-
-    afficherEmployesNonAssignes();
-    
-
-    afficherToutesLesZones();
-   
-});
-
+// Fonction pour obtenir la classe CSS selon le rôle
 function getRoleClass(role) {
     switch(role) {
         case 'Réceptionniste': return 'role-receptionist';
@@ -314,6 +106,7 @@ function getRoleClass(role) {
     }
 }
 
+// Fonction pour afficher les employés non assignés
 function afficherEmployesNonAssignes() {
     const container = document.getElementById('staff-list-container');
     const nonAssignes = getEmployesNonAssignes();
@@ -325,7 +118,7 @@ function afficherEmployesNonAssignes() {
     
     container.innerHTML = nonAssignes.map(employe => 
         `<div class="worker-card" onclick="showProfile(${employe.id})">
-            <img src="${employe.photo}" alt="${employe.nom}" onerror="this.src='images/default.jpg'">
+            <img src="${employe.photo}" alt="${employe.nom}" onerror="this.src='https://via.placeholder.com/50x50?text=Photo'">
             <div class="worker-info">
                 <h3>${employe.nom}</h3>
                 <p>${employe.email}</p>
@@ -335,8 +128,7 @@ function afficherEmployesNonAssignes() {
     ).join('');
 }
 
-
-
+// Fonction pour afficher le profil d'un employé
 function showProfile(employeId) {
     const employe = rechercherParId(employeId);
     if (!employe) return;
@@ -352,7 +144,6 @@ function showProfile(employeId) {
     
     const experiencesContainer = document.getElementById('profileExperiences');
     
- 
     let experiencesHTML = '';
     for (let i = 0; i < employe.experiences.length; i++) {
         experiencesHTML += `<span class="experience-tag">${employe.experiences[i]}</span>`;
@@ -362,26 +153,58 @@ function showProfile(employeId) {
     document.getElementById('profileModal').style.display = 'block';
 }
 
-
+// Fonction pour fermer le modal de profil
 function closeProfile() {
     document.getElementById('profileModal').style.display = 'none';
 }
 
+// Fonction pour ouvrir le modal d'ajout
+function ouvrirModal() {
+    document.getElementById('addEmployeeModal').style.display = 'block';
+    document.getElementById('employeeForm').reset();
+}
 
+// Fonction pour fermer le modal d'ajout
+function fermerModal() {
+    document.getElementById('addEmployeeModal').style.display = 'none';
+}
+
+// Fonction pour soumettre le formulaire
+function soumettreFormulaire(event) {
+    event.preventDefault();
+    const nom = document.getElementById('employeeName').value;
+    const role = document.getElementById('employeeRole').value;
+    const photo = document.getElementById('employeePhoto').value || 'images/default.jpg';
+    const email = document.getElementById('employeeEmail').value;
+    const telephone = document.getElementById('employeePhone').value;
+    const experiences = document.getElementById('employeeExperiences').value.split(',').map(exp => exp.trim()).filter(exp => exp !== '');
+    
+    // Ici vous devriez appeler votre fonction ajouterEmploye
+    console.log("Nouvel employé:", {nom, role, photo, email, telephone, experiences});
+    
+    fermerModal();
+    afficherEmployesNonAssignes();
+}
+
+// Initialisation
 document.addEventListener('DOMContentLoaded', function() {
- 
+    // Affichage initial des employés non assignés
+    afficherEmployesNonAssignes();
     
-    
+    // Gestion des événements pour les modals
+    document.querySelector('.add-btn').addEventListener('click', ouvrirModal);
+    document.querySelector('.close').addEventListener('click', fermerModal);
+    document.querySelector('.cancel-btn').addEventListener('click', fermerModal);
     document.querySelector('.close-profile').addEventListener('click', closeProfile);
+    document.getElementById('employeeForm').addEventListener('submit', soumettreFormulaire);
     
-   
+    // Fermer les modals en cliquant à l'extérieur
     window.addEventListener('click', function(event) {
-        const profileModal = document.getElementById('profileModal');
-        if (event.target === profileModal) {
+        if (event.target === document.getElementById('addEmployeeModal')) {
+            fermerModal();
+        }
+        if (event.target === document.getElementById('profileModal')) {
             closeProfile();
         }
     });
-    
-
-    afficherEmployesNonAssignes();
 });

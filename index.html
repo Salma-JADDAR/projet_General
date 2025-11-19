@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Bureau</title>
+    <title>Plan Bureau - Système Walkin</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,47 +12,99 @@
             <h2>Personnel Non Assigné</h2>
             <button class="add-btn">Ajouter Employé</button>
             <div id="staff-list-container">
-                
+                <!-- Les employés non assignés seront affichés ici -->
             </div>
         </div>
 
         <div class="main-area">
             <h1>Plan d'Étage</h1>
             <div class="floor-plan">
-                <div class="zone salle_conference">
+                <div class="zone a" onclick="toggleZone(this)">
+                    <h3>Salle de Conférence</h3>
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone reception">
+                <div class="zone b" onclick="toggleZone(this)">
+                    <h3>Réception</h3>
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone salle_serveurs">
+                <div class="zone c" onclick="toggleZone(this)">
+                    <h3>Salle des Serveurs</h3>
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone salle_securite">
+                <div class="zone d" onclick="toggleZone(this)">
+                    <h3>Salle de Sécurité</h3>
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone salle_personnel">
+                <div class="zone e" onclick="toggleZone(this)">
+                    <h3>Salle du Personnel</h3>
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone salle_archives">
+                <div class="zone f" onclick="toggleZone(this)">
+                    <h3>Salle d'Archives</h3>
+                    <div class="staff-here"></div>
+                </div>
+                <div class="zone g" onclick="toggleZone(this)">
+                    <h3>Bureau Manager</h3>
+                    <div class="staff-here"></div>
+                </div>
+                <div class="zone h" onclick="toggleZone(this)">
+                    <h3>Salle de Réunion</h3>
                     <div class="staff-here"></div>
                 </div>
             </div>
         </div>
     </div>
 
- 
+    <!-- Modal d'ajout d'employé -->
     <div id="addEmployeeModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Ajouter un Nouvel Employé</h2>
             <form id="employeeForm">
-               
+                <div class="form-group">
+                    <label for="employeeName">Nom complet</label>
+                    <input type="text" id="employeeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="employeeRole">Rôle</label>
+                    <select id="employeeRole" required>
+                        <option value="">Sélectionnez un rôle</option>
+                        <option value="Développeur">Développeur</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Réceptionniste">Réceptionniste</option>
+                        <option value="Technicien IT">Technicien IT</option>
+                        <option value="Agent de sécurité">Agent de sécurité</option>
+                        <option value="Nettoyage">Nettoyage</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="employeePhoto">Photo (URL)</label>
+                    <input type="text" id="employeePhoto" placeholder="images/nom.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="employeeEmail">Email</label>
+                    <input type="email" id="employeeEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="employeePhone">Téléphone</label>
+                    <input type="tel" id="employeePhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="employeeExperiences">Expériences (séparées par des virgules)</label>
+                    <textarea id="employeeExperiences" placeholder="JavaScript, React, UX Design"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="cancel-btn">Annuler</button>
+                    <button type="submit" class="submit-btn">Ajouter l'employé</button>
+                </div>
             </form>
         </div>
     </div>
-
    
+    <!-- Modal de profil d'employé -->
     <div id="profileModal" class="profile-modal">
         <div class="profile-content">
             <span class="close-profile">&times;</span>
@@ -67,9 +119,7 @@
             </div>
             <div class="profile-experiences">
                 <h4>Expériences</h4>
-                <div id="profileExperiences" class="experience-list">
-                  
-                </div>
+                <div id="profileExperiences" class="experience-list"></div>
             </div>
         </div>
     </div>
