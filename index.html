@@ -15,7 +15,7 @@
                 <!-- Les employés non assignés seront affichés ici -->
             </div>
         </div>
-
+        
         <div class="main-area">
             <h1>Plan d'Étage</h1>
             <div class="floor-plan">
@@ -57,45 +57,82 @@
 
     <!-- Modal d'ajout d'employé -->
     <div id="addEmployeeModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content large-modal">
             <span class="close">&times;</span>
             <h2>Ajouter un Nouvel Employé</h2>
             <form id="employeeForm">
-                <div class="form-group">
-                    <label for="employeeName">Nom complet</label>
-                    <input type="text" id="employeeName" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="employeeName">Nom complet *</label>
+                        <input type="text" id="employeeName" required 
+                               pattern="[A-Za-zÀ-ÿ\s]{2,}(?:\s[A-Za-zÀ-ÿ\s]{2,}){1,}"
+                               title="Le nom doit contenir au moins 2 mots avec des lettres uniquement">
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employeeRole">Rôle *</label>
+                        <select id="employeeRole" required>
+                            <option value="">Sélectionnez un rôle</option>
+                            <option value="Développeur">Développeur</option>
+                            <option value="Designer">Designer</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Commercial">Commercial</option>
+                            <option value="Réceptionniste">Réceptionniste</option>
+                            <option value="Technicien IT">Technicien IT</option>
+                            <option value="Agent de sécurité">Agent de sécurité</option>
+                            <option value="Nettoyage">Nettoyage</option>
+                        </select>
+                        <span class="error-message" id="roleError"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="employeeRole">Rôle</label>
-                    <select id="employeeRole" required>
-                        <option value="">Sélectionnez un rôle</option>
-                        <option value="Développeur">Développeur</option>
-                        <option value="Designer">Designer</option>
-                        <option value="Manager">Manager</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Commercial">Commercial</option>
-                        <option value="Réceptionniste">Réceptionniste</option>
-                        <option value="Technicien IT">Technicien IT</option>
-                        <option value="Agent de sécurité">Agent de sécurité</option>
-                        <option value="Nettoyage">Nettoyage</option>
-                    </select>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="employeeEmail">Email *</label>
+                        <input type="email" id="employeeEmail" required 
+                               pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                               title="Entrez une adresse email valide">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employeePhone">Téléphone *</label>
+                        <input type="tel" id="employeePhone" required 
+                               pattern="[\+]?[0-9\s\-\(\)]{10,20}"
+                               title="Entrez un numéro de téléphone valide">
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="employeePhoto">Photo (URL)</label>
-                    <input type="text" id="employeePhoto" placeholder="images/nom.jpg">
+                
+                <div class="form-group photo-group">
+                    <label for="photoUpload">Photo de profil *</label>
+                    <div class="photo-upload-container">
+                        <div class="photo-preview">
+                            <img id="photoPreview" src="" alt="Aperçu photo">
+                            <span class="no-photo">Aucune photo sélectionnée</span>
+                        </div>
+                        <div class="file-input-wrapper">
+                            <input type="file" id="photoUpload" accept="image/*" required 
+                                   onchange="handleImageUpload(event)">
+                            <span class="file-input-label">Choisir une image</span>
+                        </div>
+                    </div>
+                    <span class="error-message" id="photoError"></span>
                 </div>
-                <div class="form-group">
-                    <label for="employeeEmail">Email</label>
-                    <input type="email" id="employeeEmail" required>
+                
+                <div class="form-group experiences-group">
+                    <label>Expériences professionnelles *</label>
+                    <div id="experiencesContainer" class="experiences-container">
+                    
+                    </div>
+                    <button type="button" class="add-experience-btn" onclick="addExperienceField()">
+                        + Ajouter une expérience
+                    </button>
+                    <span class="error-message" id="experiencesError"></span>
                 </div>
-                <div class="form-group">
-                    <label for="employeePhone">Téléphone</label>
-                    <input type="tel" id="employeePhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="employeeExperiences">Expériences (séparées par des virgules)</label>
-                    <textarea id="employeeExperiences" placeholder="JavaScript, React, UX Design"></textarea>
-                </div>
+                
                 <div class="form-buttons">
                     <button type="button" class="cancel-btn">Annuler</button>
                     <button type="submit" class="submit-btn">Ajouter l'employé</button>
@@ -103,8 +140,8 @@
             </form>
         </div>
     </div>
-   
-    <!-- Modal de profil d'employé -->
+
+ 
     <div id="profileModal" class="profile-modal">
         <div class="profile-content">
             <span class="close-profile">&times;</span>
