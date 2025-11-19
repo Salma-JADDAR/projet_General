@@ -27,7 +27,7 @@ body {
     min-height: 100vh;
 }
 
-/* Sidebar */
+
 .sidebar {
     width: 260px;
     background: rgba(52, 73, 94, 0.9);
@@ -71,14 +71,14 @@ body {
     font-size: 16px;
 }
 
-/* Main area */
+
 .main-area {
     flex: 1;
     padding: 25px;
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Floor plan avec 8 zones */
+
 .floor-plan {
     width: 100%;
     height: 80vh;
@@ -99,7 +99,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* Zones */
+
 .zone {
     padding: 10px;
     display: flex;
@@ -118,8 +118,8 @@ body {
     border-color: white;
 }
 
-/* Application des 8 zones */
-.a {
+
+.Salle_de_Conférence {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     width: 410px;
@@ -128,14 +128,14 @@ body {
     margin-top: 10px; 
 }
 
-.b {
+.Reception {
     grid-column: 1 / 2;
     grid-row: 2 / 4;
     background: rgba(155, 89, 182, 0);
     height: 400px;
 }
 
-.c {
+.Salle_des_Serveurs{
     grid-column: 2 / 3;
     grid-row: 1 / 4;
     background: rgba(52, 152, 219, 0);
@@ -144,7 +144,7 @@ body {
     height: 600px;
 }
 
-.d {
+.Salle_de_Sécurité {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
     background: rgba(241, 196, 15, 0);
@@ -152,7 +152,7 @@ body {
     height: 210px;
 }
 
-.e {
+.Salle_du_Personnel {
     grid-column: 4 / 5;
     grid-row: 1 / 2;
     background: rgba(46, 204, 113, 0);
@@ -160,7 +160,7 @@ body {
     height: 210px;
 }
 
-.f {
+.Salle_dArchives {
     grid-column: 3 / 5;
     grid-row: 2 / 3;
     background: rgba(149, 165, 166, 0);
