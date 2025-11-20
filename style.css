@@ -2,8 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Verdana, sans-serif;
+   font-family: 'Poppins', sans-serif;
 }
+
 
 body {
     background: white;
@@ -182,15 +183,26 @@ body {
     height: 170px;
 }
 
-/* Classes pour l'état actif avec couleurs */
-.Salle_de_Conférence.active { background: rgba(231, 76, 60, 0.85); }
-.Reception.active { background: rgba(155, 89, 182, 0.85); }
-.c.active { background: rgba(52, 152, 219, 0.85); }
-.d.active { background: rgba(241, 196, 15, 0.85); }
-.e.active { background: rgba(46, 204, 113, 0.85); }
-.f.active { background: rgba(149, 165, 166, 0.85); }
-.g.active { background: rgba(230, 126, 34, 0.85); }
-.h.active { background: rgba(52, 152, 219, 0.85); }
+
+.Salle_de_Conférence.active {
+     background: rgba(231, 76, 60, 0.85);
+     }
+.Reception.active { 
+    background: rgba(155, 89, 182, 0.85);
+ }
+.Salle_dArchives.active { 
+    background: rgba(52, 152, 219, 0.85);
+ }
+.Salle_de_sécurité.active { 
+    background: rgba(241, 196, 15, 0.85);
+ }
+.Salle_du_Personnel.active {
+     background: rgba(46, 204, 113, 0.85);
+     }
+.Salle_des_serveurs .active { 
+    background: rgba(230, 126, 34, 0.85);
+ }
+
 
 .zone h3 {
     font-size: 1.1rem;
