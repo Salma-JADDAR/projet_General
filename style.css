@@ -135,16 +135,16 @@ body {
     height: 400px;
 }
 
-.Salle_des_Serveurs{
+.couloire_1 {
     grid-column: 2 / 3;
     grid-row: 1 / 4;
-    background: rgba(52, 152, 219, 0);
     margin-top: 27px;
     width: 180px;
     height: 600px;
+    visibility: hidden;
 }
 
-.Salle_de_Sécurité {
+.Salle_dArchives {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
     background: rgba(241, 196, 15, 0);
@@ -152,7 +152,7 @@ body {
     height: 210px;
 }
 
-.Salle_du_Personnel {
+.Salle_de_sécurité {
     grid-column: 4 / 5;
     grid-row: 1 / 2;
     background: rgba(46, 204, 113, 0);
@@ -160,21 +160,22 @@ body {
     height: 210px;
 }
 
-.Salle_dArchives {
+.couloire_2 {
     grid-column: 3 / 5;
     grid-row: 2 / 3;
     background: rgba(149, 165, 166, 0);
     height: 170px;
+    visibility: hidden;
 }
 
-.g {
+.Salle_du_Personnel {
     grid-column: 3 / 4;
     grid-row: 3 / 4;
     background: rgba(230, 126, 34, 0);
     height: 170px;
 }
 
-.h {
+.Salle_des_serveurs {
     grid-column: 4 / 5;
     grid-row: 3 / 4;
     background: rgba(52, 152, 219, 0);
@@ -182,8 +183,8 @@ body {
 }
 
 /* Classes pour l'état actif avec couleurs */
-.a.active { background: rgba(231, 76, 60, 0.85); }
-.b.active { background: rgba(155, 89, 182, 0.85); }
+.Salle_de_Conférence.active { background: rgba(231, 76, 60, 0.85); }
+.Reception.active { background: rgba(155, 89, 182, 0.85); }
 .c.active { background: rgba(52, 152, 219, 0.85); }
 .d.active { background: rgba(241, 196, 15, 0.85); }
 .e.active { background: rgba(46, 204, 113, 0.85); }
