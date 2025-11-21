@@ -2,15 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-   font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
-
 
 body {
     background: white;
     background-size: cover;
     color: #333;
     min-height: 100vh;
+    overflow: hidden; /* Empêche le scroll global */
 }
 
 .main-area h1 {
@@ -26,15 +26,20 @@ body {
 .container {
     display: flex;
     min-height: 100vh;
+    overflow: hidden; /* Empêche le scroll global */
 }
 
-
+/* SIDEBAR AVEC SCROLL INDÉPENDANT */
 .sidebar {
     width: 260px;
     background: rgba(52, 73, 94, 0.9);
     color: white;
     padding: 25px 20px;
     box-shadow: 3px 0 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Contient le scroll interne */
 }
 
 .sidebar h2 {
@@ -72,13 +77,38 @@ body {
     font-size: 16px;
 }
 
+/* Scroll pour la sidebar - INDÉPENDANT */
+.staff-list-container {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding-right: 10px;
+    flex: 1;
+}
+
+.staff-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.staff-list-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.staff-list-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.staff-list-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
 
 .main-area {
     flex: 1;
     padding: 25px;
     background: rgba(255, 255, 255, 0.05);
+    overflow: hidden; /* Pas de scroll ici */
 }
-
 
 .floor-plan {
     width: 100%;
@@ -100,7 +130,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-
+/* ZONES AVEC SCROLL INDÉPENDANT */
 .zone {
     padding: 10px;
     display: flex;
@@ -111,6 +141,7 @@ body {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     cursor: pointer;
+    overflow: hidden; /* Important pour contenir le scroll */
 }
 
 .zone:hover {
@@ -118,7 +149,6 @@ body {
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     border-color: white;
 }
-
 
 .Salle_de_Conférence {
     grid-column: 1 / 2;
@@ -183,26 +213,24 @@ body {
     height: 190px;
 }
 
-
 .Salle_de_Conférence.active {
      background: rgba(231, 76, 60, 0.85);
-     }
+}
 .Reception.active { 
     background: rgba(155, 89, 182, 0.85);
- }
+}
 .Salle_dArchives.active { 
     background: rgba(52, 152, 219, 0.85);
- }
+}
 .Salle_de_sécurité.active { 
     background: rgba(241, 196, 15, 0.85);
- }
+}
 .Salle_du_Personnel.active {
      background: rgba(46, 204, 113, 0.85);
-     }
-.Salle_des_serveurs .active { 
+}
+.Salle_des_serveurs.active { 
     background: rgba(230, 126, 34, 0.85);
- }
-
+}
 
 .zone h3 {
     font-size: 1.1rem;
@@ -220,6 +248,7 @@ body {
     border: 2px white;
 }
 
+/* SCROLL INDÉPENDANT POUR CHAQUE ZONE */
 .staff-here {
     flex: 1;
     padding: 10px;
@@ -230,6 +259,27 @@ body {
     flex-wrap: wrap;
     gap: 8px;
     align-content: flex-start;
+    max-height: 150px; /* Hauteur fixe pour forcer le scroll */
+    overflow-y: auto; /* Scroll indépendant */
+    overflow-x: hidden; /* Pas de scroll horizontal */
+}
+
+.staff-here::-webkit-scrollbar {
+    width: 6px;
+}
+
+.staff-here::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.staff-here::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.staff-here::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
 
 /* Cartes d'employés */
@@ -287,7 +337,7 @@ body {
     border-radius: 8px;
 }
 
-
+/* Modals */
 .modal {
     display: none;
     position: fixed;
@@ -737,6 +787,140 @@ body {
     color: #e74c3c;
 }
 
+/* Styles pour les employés assignés */
+.assigned-employee {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    position: relative;
+    width: 100%;
+    flex-shrink: 0; /* Empêche le rétrécissement */
+}
+
+.assigned-employee img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.employee-name {
+    font-size: 12px;
+    font-weight: 500;
+    flex: 1;
+}
+
+.remove-employee {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-employee:hover {
+    background: #c0392b;
+}
+
+/* Bouton d'ajout dans les zones */
+.add-to-zone-btn {
+    width: 30px;
+    height: 30px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px auto 0;
+    flex-shrink: 0; /* Important pour le bouton */
+}
+
+.add-to-zone-btn:hover {
+    background: #219a52;
+}
+
+/* Modal d'assignation */
+#assignmentModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+#assignmentModal .modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.employee-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.employee-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.employee-item:hover {
+    background-color: #f8f9fa;
+}
+
+.employee-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.employee-info h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.employee-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+/* Ajustements pour les zones */
+.zone .staff-here {
+    min-height: 40px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .container {
@@ -744,6 +928,7 @@ body {
     }
     .sidebar {
         width: 100%;
+        height: auto;
     }
     .floor-plan {
         grid-template-columns: 1fr 1fr;
@@ -751,7 +936,8 @@ body {
         height: 100vh; 
     }
     
-    .a, .b, .c, .d, .e, .f, .g, .h {
+    .Salle_de_Conférence, .Reception, .Salle_dArchives, .Salle_de_sécurité, 
+    .Salle_du_Personnel, .Salle_des_serveurs {
         grid-column: auto;
         grid-row: auto;
         width: auto;
@@ -804,132 +990,4 @@ body {
         margin: 2% auto;
         padding: 15px;
     }
-}
-/* Styles pour les employés assignés */
-.assigned-employee {
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    background: white;
-    border-radius: 8px;
-    margin-bottom: 5px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    position: relative;
-}
-
-.assigned-employee img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.employee-name {
-    font-size: 12px;
-    font-weight: 500;
-    flex: 1;
-}
-
-.remove-employee {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.remove-employee:hover {
-    background: #c0392b;
-}
-
-/* Bouton d'ajout dans les zones */
-.add-to-zone-btn {
-    width: 30px;
-    height: 30px;
-    background: #27ae60;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px auto 0;
-}
-
-.add-to-zone-btn:hover {
-    background: #219a52;
-}
-
-/* Modal d'assignation */
-#assignmentModal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-
-#assignmentModal .modal-content {
-    background-color: white;
-    margin: 10% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-}
-
-.employee-list {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.employee-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid #e9ecef;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.employee-item:hover {
-    background-color: #f8f9fa;
-}
-
-.employee-item img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-.employee-info h4 {
-    margin: 0;
-    font-size: 14px;
-    color: #2c3e50;
-}
-
-.employee-info p {
-    margin: 0;
-    font-size: 12px;
-    color: #7f8c8d;
-}
-
-/* Ajustements pour les zones */
-.zone .staff-here {
-    min-height: 40px;
 }

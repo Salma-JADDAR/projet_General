@@ -12,8 +12,8 @@
         <div class="sidebar">
             <h2>Personnel Non Assigné</h2>
             <button class="add-btn">Ajouter Employé</button>
-            <div id="staff-list-container">
-           
+            <div class="staff-list-container" id="staff-list-container">
+                <!-- Les employés non assignés apparaîtront ici -->
             </div>
         </div>
         
@@ -28,11 +28,10 @@
                     <h3>Réception</h3>
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone couloire_1" >
-                   
+                <div class="zone couloire_1">
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone Salle_dArchives " onclick="toggleZone(this)">
+                <div class="zone Salle_dArchives" onclick="toggleZone(this)">
                     <h3>Salle d'Archives</h3>
                     <div class="staff-here"></div>
                 </div>
@@ -40,8 +39,7 @@
                     <h3>Salle de sécurité</h3>
                     <div class="staff-here"></div>
                 </div>
-                <div class="zone couloire_2" >
-                    
+                <div class="zone couloire_2">
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone Salle_du_Personnel" onclick="toggleZone(this)">
@@ -56,6 +54,7 @@
         </div>
     </div>
 
+    <!-- Modal Ajouter Employé -->
     <div id="addEmployeeModal" class="modal">
         <div class="modal-content large-modal">
             <span class="close">&times;</span>
@@ -125,7 +124,7 @@
                 <div class="form-group experiences-group">
                     <label>Expériences professionnelles *</label>
                     <div id="experiencesContainer" class="experiences-container">
-                    
+                        <!-- Les expériences seront ajoutées ici dynamiquement -->
                     </div>
                     <button type="button" class="add-experience-btn" onclick="addExperienceField()">
                         + Ajouter une expérience
@@ -141,6 +140,7 @@
         </div>
     </div>
 
+    <!-- Modal Profil Employé -->
     <div id="profileModal" class="profile-modal">
         <div class="profile-content">
             <span class="close-profile">&times;</span>
@@ -160,14 +160,16 @@
         </div>
     </div>
 
-<div id="assignmentModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeAssignmentModal()">&times;</span>
-        <div id="assignmentModalContent">
-        
+    <!-- Modal Assignation -->
+    <div id="assignmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fermerModalAffectation()">&times;</span>
+            <div id="assignmentModalContent">
+                <!-- Contenu de la modal d'assignation -->
+            </div>
         </div>
     </div>
-</div>
+
     <script src="main.js"></script>
 </body>
 </html>
