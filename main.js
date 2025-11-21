@@ -14,3 +14,49 @@ let tousLesEmployes = [
     {id: 12, nom: "Sophie CREATIVE", role: "Designer", photo: "images/sophie.PNG", email: "sophie@entreprise.com", telephone: "+33 1 34 56 78 90", experiences: ["Adobe Creative Suite", "Motion Design", "Illustration", "Branding"], zoneAssignee: null},
 ];
 
+// Tableau global pour tous les zones (6 zones)
+let toutesLesZones = [
+    {
+        id: "Salle_de_Conférence",
+        nom: "Salle de conférence",
+        rolesAutorises: ["Manager", "Développeur", "Designer", "Marketing", "Commercial", "Réceptionniste", "Technicien IT", "Agent de sécurité", "Nettoyage"],
+        capaciteMax: 20,
+        description: "Salle pour les réunions et présentations"
+    },
+    {
+        id: "Reception", 
+        nom: "Réception",
+        rolesAutorises: ["Réceptionniste", "Manager"],
+        capaciteMax: 2,
+        description: "Zone d'accueil des visiteurs"
+    },
+    {
+        id: "Salle_des_serveurs",
+        nom: "Salle des serveurs", 
+        rolesAutorises: ["Technicien IT", "Manager"],
+        capaciteMax: 2,
+        description: "Salle technique contenant les serveurs"
+    },
+    {
+        id: "Salle_de_sécurité",
+        nom: "Salle de sécurité",
+        rolesAutorises: ["Agent de sécurité", "Manager"],
+        capaciteMax: 3,
+        description: "Poste de contrôle de sécurité"
+    },
+    {
+        id: "Salle_du_Personnel",
+        nom: "Salle du personnel",
+        rolesAutorises: ["Manager", "Développeur", "Designer", "Marketing", "Commercial", "Réceptionniste", "Technicien IT", "Agent de sécurité", "Nettoyage"],
+        capaciteMax: 15,
+        description: "Espace détente pour le personnel"
+    },
+    {
+        id: "Salle_dArchives",
+        nom: "Salle d'archives",
+        rolesAutorises: ["Manager", "Développeur", "Designer", "Marketing", "Commercial", "Réceptionniste", "Technicien IT", "Agent de sécurité"],
+        capaciteMax: 5,
+        description: "Salle de stockage des archives"
+    }
+];
+
