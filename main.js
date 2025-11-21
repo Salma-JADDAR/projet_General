@@ -1,5 +1,5 @@
 // Tableau global pour tous les employés
-let tousLesEmployes = [
+let Employes = [
     {id: 1, nom: "Salma JADDAR", role: "Développeur", photo: "images/SALMA.PNG", email: "salma@entreprise.com", telephone: "+33 1 23 45 67 89", experiences: ["JavaScript", "React", "Node.js", "API"], zoneAssignee: null},
     {id: 2, nom: "Ilyass ABSI", role: "Designer", photo: "images/jean.PNG", email: "ilyass@entreprise.com", telephone: "+33 1 34 56 78 90", experiences: ["Figma", "UX/UI", "Prototypage", "Design Thinking"], zoneAssignee: null},
     {id: 3, nom: "Rayhana BENSATRA", role: "Manager", photo: "images/rayhana.PNG", email: "rayhana@entreprise.com", telephone: "+33 1 45 67 89 01", experiences: ["Gestion d'équipe", "Stratégie", "Planification", "Reporting"], zoneAssignee: null},
@@ -15,7 +15,7 @@ let tousLesEmployes = [
 ];
 
 // Tableau global pour tous les zones (6 zones)
-let toutesLesZones = [
+let Zones = [
     {
         id: "Salle_de_Conférence",
         nom: "Salle de conférence",
@@ -66,12 +66,12 @@ let uploadedImageUrl = '';
 let zoneSelectionnee = '';
 
 // Fonction pour vérifier si un rôle est autorisé dans une zone
-function AutorisationAuZone(role, zoneId) {
-    for (let i = 0; i < toutesLesZones.length; i++) {
-        if (toutesLesZones[i].id === zoneId) {
-            let rolesAutorises = toutesLesZones[i].rolesAutorises;
-            for (let j = 0; j < rolesAutorises.length; j++) {
-                if (rolesAutorises[j] === role) {
+function AutorisationAuZone(rolee, zoneId) {
+    for (let i = 0; i < Zones.length; i++) {
+        if (Zones[i].id === zoneId) {
+            let EstAutoriser = Zones[i].rolesAutorises;
+            for (let j = 0; j < EstAutoriser.length; j++) {
+                if (EstAutoriser[j] === rolee) {
                     return true;
                 }
             }
@@ -81,68 +81,81 @@ function AutorisationAuZone(role, zoneId) {
     return false;
 }
 
-// Fonction pour obtenir les employés éligibles pour une zone
+// Fonction pour obtenir les employés qui a la posssibility de rejoindre une zone 
 function CandidatsPourZone(zoneId) {
-    let employesadapteAuzone = [];
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        let employe = tousLesEmployes[i];
-        if (employe.zoneAssignee === null && AutorisationAuZone(employe.role, zoneId)) {
-            employesadapteAuzone.push(employe);
+    let employesadapteAuZone = [];
+    for (let i = 0; i < Employes.length; i++) {
+        let emp =Employes[i];
+        if (emp.zoneAssignee === null && AutorisationAuZone(emp.role, zoneId)) {
+            employesadapteAuZone.push(emp);
         }
     }
-    return employesadapteAuzone;
+    return employesadapteAuZone;
 }
 
 // Fonction pour obtenir le nom d'une zone
-function nomDeZone(zoneId) {
-    for (let i = 0; i < toutesLesZones.length; i++) {
-        if (toutesLesZones[i].id === zoneId) {
-            return toutesLesZones[i].nom;
+function NomDeZone(zoneId) {
+    for (let i = 0; i < Zones.length; i++) {
+        if (Zones[i].id === zoneId) {
+            return Zones[i].nom;
         }
     }
     return zoneId;
 }
 
-// Fonction pour ouvrir la modal d'assignation
-function afficherModalAffectation(zoneId) {
+// Fonction pour ouvrir la modal d'assignation 
+function ModalAffectation(zoneId) {
     zoneSelectionnee = zoneId;
     let modal = document.getElementById('assignmetModal');
     let employesDisponibles = CandidatsPourZone(zoneId);
-    let contenuModal = '';
+    let contenu = '';
 
     if (employesDisponibles.length === 0) {
-        contenuModal = '<div class="empty-state">Aucun employé disponible pour cette zone</div>';
+        contenu = '<div class="empty-state">Aucun employé disponible pour cette zone</div>';
     } else {
-        contenuModal = '<h3>Choisir un employé pour ' + nomDeZone(zoneId) + '</h3>';
-        contenuModal += '<div class="employee-list">';
+        contenu = '<h3>Choisir un employé pour ' + NomDeZone(zoneId) + '</h3>';
+        contenu += '<div class="employee-list">';
 
         for (let i = 0; i < employesDisponibles.length; i++) {
-            let employe = employesDisponibles[i];
-            contenuModal += '<div class="employee-item" onclick="affecterEmploye(' + employe.id + ')">';
-            contenuModal += '<img src="' + employe.photo + '" alt="' + employe.nom + '">';
-            contenuModal += '<div class="employee-info">';
-            contenuModal += '<h4>' + employe.nom + '</h4>';
-            contenuModal += '<p>' + employe.role + '</p>';
-            contenuModal += '</div>';
-            contenuModal += '</div>';
+            let emp = employesDisponibles[i];
+            contenu += '<div class="employee-item" onclick="affecterEmploye(' + emp.id + ')">';
+            contenu += '<img src="' + emp.photo + '" alt="' + emp.nom + '">';
+            contenu += '<div class="employee-info">';
+            contenu += '<h4>' + emp.nom + '</h4>';
+            contenu += '<p>' + emp.role + '</p>';
+            contenu += '</div>';
+            contenu += '</div>';
         }
-        contenuModal += '</div>';
+        contenu += '</div>';
     }
 
-    document.getElementById('assignmentModalContent').innerHTML = contenuModal;
+    document.getElementById('assignmentModalContent').innerHTML = contenu;
     modal.style.display = 'block';
 }
 
 // Fonction pour assigner un employé à une zone
-function AffecterEmployeAzone(employeId) {
-    for (let i = 0; i < tousLesEmployes.length; i++) {
-        if (tousLesEmployes[i].id === employeId) {
-            tousLesEmployes[i].zoneAssignee = zoneSelectionnee;
+function  EmployeeAssingner(employeId) {
+    for (let i = 0; i < Employes.length; i++) {
+        if (Employes[i].id === employeId) {
+            Employes[i].zoneAssignee = zoneSelectionnee;
             break;
         }
     }
     
     fermerModalAffectation();
+    afficherEmployesNonAssignes();
+    afficherEmployesDansZones();
+}
+
+// Fonction pour désassigner un employé à une zone
+function EmployeeNoAssingner(employeId) {
+    for (let i = 0; i < Employes.length; i++) {
+        if (Employes[i].id === employeId) {
+            Employes[i].zoneAssignee = null;
+                  break;
+        }
+    }
+    
     afficherEmployesNonAssignes();
     afficherEmployesDansZones();
 }
