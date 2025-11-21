@@ -83,3 +83,15 @@ function AutorisationAuZone(role, zoneId) {
 
 
 
+// Fonction pour obtenir les employés éligibles pour une zone
+function CandidatsPourZone(zoneId) {
+    let employesadapteAuzone = [];
+    for (let i = 0; i < tousLesEmployes.length; i++) {
+        let employe = tousLesEmployes[i];
+        if (employe.zoneAssignee === null && AutorisationAuZone(employe.role, zoneId)) {
+            employesadapteAuzone.push(employe);
+        }
+    }
+    return employesadapteAuzone;
+}
+
