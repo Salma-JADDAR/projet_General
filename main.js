@@ -99,7 +99,7 @@ function CandidatsPourZone(zoneId) {
 function afficherModalAffectation(zoneId) {
     zoneSelectionnee = zoneId;
     let modal = document.getElementById('assignmentModal');
-    let employesDisponibles = afficherModalAffectation(zoneId);
+    let employesDisponibles = CandidatsPourZone(zoneId);
     let contenuModal = '';
 
     
@@ -130,4 +130,18 @@ function afficherModalAffectation(zoneId) {
     modal.style.display = 'block';
 }
 
+
+// Fonction pour assigner un employé à une zone
+function assignEmployee(employeId) {
+    for (let i = 0; i < tousLesEmployes.length; i++) {
+        if (tousLesEmployes[i].id === employeId) {
+            tousLesEmployes[i].zoneAssignee = zoneSelectionnee;
+            break;
+        }
+    }
+    
+    closeAssignmentModal();
+    afficherEmployesNonAssignes();
+    afficherEmployesDansZones();
+}
 
