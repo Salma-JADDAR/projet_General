@@ -102,3 +102,48 @@ function nomDeZone(zoneId) {
     }
     return zoneId;
 }
+
+// Fonction pour ouvrir la modal d'assignation
+function afficherModalAffectation(zoneId) {
+    zoneSelectionnee = zoneId;
+    let modal = document.getElementById('assignmetModal');
+    let employesDisponibles = CandidatsPourZone(zoneId);
+    let contenuModal = '';
+
+    if (employesDisponibles.length === 0) {
+        contenuModal = '<div class="empty-state">Aucun employé disponible pour cette zone</div>';
+    } else {
+        contenuModal = '<h3>Choisir un employé pour ' + nomDeZone(zoneId) + '</h3>';
+        contenuModal += '<div class="employee-list">';
+
+        for (let i = 0; i < employesDisponibles.length; i++) {
+            let employe = employesDisponibles[i];
+            contenuModal += '<div class="employee-item" onclick="affecterEmploye(' + employe.id + ')">';
+            contenuModal += '<img src="' + employe.photo + '" alt="' + employe.nom + '">';
+            contenuModal += '<div class="employee-info">';
+            contenuModal += '<h4>' + employe.nom + '</h4>';
+            contenuModal += '<p>' + employe.role + '</p>';
+            contenuModal += '</div>';
+            contenuModal += '</div>';
+        }
+        contenuModal += '</div>';
+    }
+
+    document.getElementById('assignmentModalContent').innerHTML = contenuModal;
+    modal.style.display = 'block';
+}
+
+// Fonction pour assigner un employé à une zone
+function AffecterEmployeAzone(employeId) {
+    for (let i = 0; i < tousLesEmployes.length; i++) {
+        if (tousLesEmployes[i].id === employeId) {
+            tousLesEmployes[i].zoneAssignee = zoneSelectionnee;
+            break;
+        }
+    }
+    
+    fermerModalAffectation();
+    afficherEmployesNonAssignes();
+    afficherEmployesDansZones();
+}
+
