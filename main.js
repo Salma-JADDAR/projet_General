@@ -60,12 +60,12 @@ let Zones = [
     }
 ];
 
-// Variables pour l'upload d'image
+
 let experienceCount = 0;
 let uploadedImageUrl = '';
 let zoneSelectionnee = '';
 
-// Fonction pour vérifier si un rôle est autorisé dans une zone
+
 function AutorisationAuZone(rolee, zoneId) {
     for (let i = 0; i < Zones.length; i++) {
         if (Zones[i].id === zoneId) {
@@ -81,7 +81,7 @@ function AutorisationAuZone(rolee, zoneId) {
     return false;
 }
 
-// Fonction pour obtenir les employés qui a la posssibility de rejoindre une zone 
+
 function CandidatsPourZone(zoneId) {
     let employesadapteAuZone = [];
     for (let i = 0; i < Employes.length; i++) {
@@ -93,7 +93,7 @@ function CandidatsPourZone(zoneId) {
     return employesadapteAuZone;
 }
 
-// Fonction pour obtenir le nom d'une zone
+
 function NomDeZone(zoneId) {
     for (let i = 0; i < Zones.length; i++) {
         if (Zones[i].id === zoneId) {
@@ -103,7 +103,7 @@ function NomDeZone(zoneId) {
     return zoneId;
 }
 
-// Fonction pour ouvrir la modal d'assignation 
+
 function ModalAffectation(zoneId) {
     zoneSelectionnee = zoneId;
     let modal = document.getElementById('assignmetModal');
@@ -133,7 +133,7 @@ function ModalAffectation(zoneId) {
     modal.style.display = 'block';
 }
 
-// Fonction pour assigner un employé à une zone
+
 function  EmployeeAssingner(employeId) {
     for (let i = 0; i < Employes.length; i++) {
         if (Employes[i].id === employeId) {
@@ -142,12 +142,12 @@ function  EmployeeAssingner(employeId) {
         }
     }
     
-    fermerModalAffectation();
+    FermerModal();
     afficherEmployesNonAssignes();
     afficherEmployesDansZones();
 }
 
-// Fonction pour désassigner un employé à une zone
+
 function EmployeeNoAssingner(employeId) {
     for (let i = 0; i < Employes.length; i++) {
         if (Employes[i].id === employeId) {
@@ -160,3 +160,8 @@ function EmployeeNoAssingner(employeId) {
     afficherEmployesDansZones();
 }
 
+
+function FermerModal() {
+    document.getElementById('assignmentModal').style.display = 'none';
+    zoneSelectionnee = '';
+}
