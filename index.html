@@ -6,8 +6,6 @@
     <title>Plan Bureau - Système Walkin</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
 </head>
 <body>
     <div class="container">
@@ -58,7 +56,6 @@
         </div>
     </div>
 
-    <!-- Modal d'ajout d'employé -->
     <div id="addEmployeeModal" class="modal">
         <div class="modal-content large-modal">
             <span class="close">&times;</span>
@@ -144,7 +141,6 @@
         </div>
     </div>
 
- 
     <div id="profileModal" class="profile-modal">
         <div class="profile-content">
             <span class="close-profile">&times;</span>
@@ -164,6 +160,14 @@
         </div>
     </div>
 
+<div id="assignmentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAssignmentModal()">&times;</span>
+        <div id="assignmentModalContent">
+        
+        </div>
+    </div>
+</div>
     <script src="main.js"></script>
 </body>
 </html>
