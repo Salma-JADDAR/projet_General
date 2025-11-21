@@ -60,3 +60,26 @@ let toutesLesZones = [
     }
 ];
 
+// Variables pour l'upload d'image
+let experienceCount = 0;
+let uploadedImageUrl = '';
+let currentZoneForAssignment = '';
+
+// Fonction pour vérifier si un rôle est autorisé dans une zone
+function AutorisationAuZone(role, zoneId) {
+    for (let i = 0; i < toutesLesZones.length; i++) {
+        if (toutesLesZones[i].id === zoneId) {
+            let rolesAutorises = toutesLesZones[i].rolesAutorises;
+            for (let j = 0; j < rolesAutorises.length; j++) {
+                if (rolesAutorises[j] === role) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    return false;
+}
+
+
+
