@@ -210,4 +210,6 @@ function getEmployesDeZone(zoneId) {
     return employesZone;
 }
 
-
+function toggleZone(zoneElement) {
+    zoneElement.classList.toggle('active');
+}
