@@ -117,12 +117,12 @@ function ModalAffectation(zoneId) {
         contenu += '<div class="employee-list">';
 
         for (let i = 0; i < employesDisponibles.length; i++) {
-            let emp = employesDisponibles[i];
-            contenu += '<div class="employee-item" onclick="affecterEmploye(' + emp.id + ')">';
-            contenu += '<img src="' + emp.photo + '" alt="' + emp.nom + '">';
+          
+            contenu += '<div class="employee-item" onclick="affecterEmploye(' +  employesDisponibles[i].id + ')">';
+            contenu += '<img src="' + employesDisponibles[i].photo + '" alt="' +  employesDisponibles[i].nom + '">';
             contenu += '<div class="employee-info">';
-            contenu += '<h4>' + emp.nom + '</h4>';
-            contenu += '<p>' + emp.role + '</p>';
+            contenu += '<h4>' +  employesDisponibles[i].nom + '</h4>';
+            contenu += '<p>' +  employesDisponibles[i].role + '</p>';
             contenu += '</div>';
             contenu += '</div>';
         }
@@ -188,11 +188,11 @@ function afficherEmployesDansZones() {
             }
             
           
-            let capaciteActuelle = employesDansZone.length;
+            let capacite = employesDansZone.length;
             let capaciteMax = Zones[i].capaciteMax;
             
-            if (capaciteActuelle < capaciteMax) {
-                html += '<button class="add-to-zone-btn" onclick="afficherModalAffectation(\'' + zoneId + '\')">+</button>';
+            if (capacite < capaciteMax) {
+                AFFICHE  += '<button class="add-to-zone-btn" onclick="afficherModalAffectation(\'' + zoneId + '\')">+</button>';
             }
             
             staffHereElement.innerHTML =AFFICHE;
@@ -200,5 +200,14 @@ function afficherEmployesDansZones() {
     }
 }
 
+function getEmployesDeZone(zoneId) {
+    let employesZone = [];
+    for (let i = 0; i < Employes.length; i++) {
+        if (Employes[i].zoneAssignee === zoneId) {
+            employesZone.push(Employes[i]);
+        }
+    }
+    return employesZone;
+}
 
 
