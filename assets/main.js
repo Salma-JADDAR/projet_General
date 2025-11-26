@@ -38,7 +38,6 @@ let Employes = [
     ], zoneAssignee: null},
 ];
 
-
 let Zones = [
     {
         id: "Salle_de_Conférence",
@@ -88,24 +87,20 @@ let experienceCount = 0;
 let uploadedImageUrl = 'assets/images/avatar.PNG'; 
 let zoneSelectionnee = '';
 
-
 function validateFullName(name) {
     const nameRegex = /^[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]{2,}(?:\s+[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]{2,})+$/;
     return nameRegex.test(name);
 }
-
 
 function validatePhoneNumber(phone) {
    const phoneRegex = /^(?:(?:\+|00)212|0)[5-9]\d{8}$/;
     return phoneRegex.test(phone.replace(/\s/g, ''));
 }
 
-
 function validateEmail(email) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
-
 
 function validateLettersOnly(text) {
     const lettersRegex = /^[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]*$/;
@@ -117,14 +112,12 @@ function validateNumbersOnly(text) {
     return numbersRegex.test(text);
 }
 
-
 function handleImageUrl() {
     const photoUrl = document.getElementById('photoUrl').value;
     const photoPreview = document.getElementById('photoPreview');
     const photoNote = document.querySelector('.photo-note');
     
     if (photoUrl) {
-        
         const img = new Image();
         img.onload = function() {
             photoPreview.src = photoUrl;
@@ -134,24 +127,21 @@ function handleImageUrl() {
             uploadedImageUrl = photoUrl;
         };
         img.onerror = function() {
-            
             photoPreview.src = 'assets/images/avatar.PNG';
             photoPreview.style.display = 'block';
             photoNote.textContent = 'URL invalide - Photo par défaut utilisée';
             photoNote.style.background = '#e74c3c';
-            uploadedImageUrl = 'images/avatar.PNG';
+            uploadedImageUrl = 'assets/images/avatar.PNG';
         };
         img.src = photoUrl;
     } else {
-     
-        photoPreview.src = 'images/avatar.PNG';
+        photoPreview.src = 'assets/images/avatar.PNG';
         photoPreview.style.display = 'block';
         photoNote.textContent = 'Photo par défaut';
         photoNote.style.background = 'burlywood';
-        uploadedImageUrl = 'images/avatar.PNG';
+        uploadedImageUrl = 'assets/images/avatar.PNG';
     }
 }
-
 
 function validateNameRealTime(input) {
     const value = input.value.trim();
@@ -188,7 +178,6 @@ function validateNameRealTime(input) {
         }
     }
 }
-
 
 function validateEmailRealTime(input) {
     const value = input.value.trim();
@@ -232,7 +221,6 @@ function validatePhoneRealTime(input) {
     }
 }
 
-
 function validateRoleRealTime(input) {
     const value = input.value;
     const errorElement = document.getElementById('roleError');
@@ -247,7 +235,6 @@ function validateRoleRealTime(input) {
         return true;
     }
 }
-
 
 function validateExperienceRealTime(input) {
     const value = input.value.trim();
@@ -267,7 +254,6 @@ function validateExperienceRealTime(input) {
     return true;
 }
 
-
 function AutorisationAuZone(role, zoneId) {
     for (let i = 0; i < Zones.length; i++) {
         if (Zones[i].id === zoneId) {
@@ -283,7 +269,6 @@ function AutorisationAuZone(role, zoneId) {
     return false;
 }
 
-
 function CandidatsPourZone(zoneId) {
     let employesadapteAuZone = [];
     for (let i = 0; i < Employes.length; i++) {
@@ -294,7 +279,6 @@ function CandidatsPourZone(zoneId) {
     return employesadapteAuZone;
 }
 
-
 function NomDeZone(zoneId) {
     for (let i = 0; i < Zones.length; i++) {
         if (Zones[i].id === zoneId) {
@@ -303,7 +287,6 @@ function NomDeZone(zoneId) {
     }
     return zoneId;
 }
-
 
 function ModalAffectation(zoneId) {
     zoneSelectionnee = zoneId;
@@ -319,7 +302,7 @@ function ModalAffectation(zoneId) {
 
         for (let i = 0; i < employesDisponibles.length; i++) {
             contenu += '<div class="employee-item" onclick="EmployeeAssingner(' + employesDisponibles[i].id + ')">';
-            contenu += '<img src="' + employesDisponibles[i].photo + '" alt="' + employesDisponibles[i].nom + '" onerror="this.src=\'images/avatar.PNG\'">';
+            contenu += '<img src="' + employesDisponibles[i].photo + '" alt="' + employesDisponibles[i].nom + '" onerror="this.src=\'assets/images/avatar.PNG\'">';
             contenu += '<div class="employee-info">';
             contenu += '<h4>' + employesDisponibles[i].nom + '</h4>';
             contenu += '<p>' + employesDisponibles[i].role + '</p>';
@@ -332,7 +315,6 @@ function ModalAffectation(zoneId) {
     document.getElementById('assignmentModalContent').innerHTML = contenu;
     modal.style.display = 'block';
 }
-
 
 function EmployeeAssingner(employeId) {
     for (let i = 0; i < Employes.length; i++) {
@@ -347,7 +329,6 @@ function EmployeeAssingner(employeId) {
     afficherEmployesDansZones();
 }
 
-
 function EmployeeNoAssingner(employeId) {
     for (let i = 0; i < Employes.length; i++) {
         if (Employes[i].id === employeId) {
@@ -360,12 +341,10 @@ function EmployeeNoAssingner(employeId) {
     afficherEmployesDansZones();
 }
 
-
 function FermerModal() {
     document.getElementById('assignmentModal').style.display = 'none';
     zoneSelectionnee = '';
 }
-
 
 function afficherEmployesDansZones() {
     for (let i = 0; i < Zones.length; i++) {
@@ -375,7 +354,14 @@ function afficherEmployesDansZones() {
             let staffHereElement = zoneElement.querySelector('.staff-here');
             let employesDansZone = getEmployesDeZone(zoneId);
             
+       
+            zoneElement.classList.remove('has-employees', 'active');
+            
          
+            if (employesDansZone.length > 0) {
+                zoneElement.classList.add('has-employees');
+            }
+            
             let zoneHeader = zoneElement.querySelector('.zone-header');
             if (!zoneHeader) {
                 zoneHeader = document.createElement('div');
@@ -386,7 +372,6 @@ function afficherEmployesDansZones() {
             let capacite = employesDansZone.length;
             let capaciteMax = Zones[i].capaciteMax;
             
-        
             let addButton = zoneHeader.querySelector('.add-to-zone-btn');
             if (!addButton) {
                 addButton = document.createElement('button');
@@ -396,7 +381,6 @@ function afficherEmployesDansZones() {
                 zoneHeader.insertBefore(addButton, zoneHeader.firstChild);
             }
             
-          
             let zoneTitle = zoneHeader.querySelector('.zone-title');
             if (!zoneTitle) {
                 zoneTitle = document.createElement('h3');
@@ -413,12 +397,11 @@ function afficherEmployesDansZones() {
                 addButton.title = 'Ajouter un employé';
             }
             
-         
             let AFFICHE = '';
             if (employesDansZone.length > 0) {
                 for (let j = 0; j < employesDansZone.length; j++) {
                     AFFICHE += '<div class="assigned-employee">';
-                    AFFICHE += '<img src="' + employesDansZone[j].photo + '" alt="' + employesDansZone[j].nom + '" onerror="this.src=\'images/avatar.PNG\'">';
+                    AFFICHE += '<img src="' + employesDansZone[j].photo + '" alt="' + employesDansZone[j].nom + '" onerror="this.src=\'assets/images/avatar.PNG\'">';
                     AFFICHE += '<span class="employee-name">' + employesDansZone[j].nom + '</span>';
                     AFFICHE += '<button class="remove-employee" onclick="EmployeeNoAssingner(' + employesDansZone[j].id + ')">×</button>';
                     AFFICHE += '</div>';
@@ -430,7 +413,6 @@ function afficherEmployesDansZones() {
     }
 }
 
-
 function getEmployesDeZone(zoneId) {
     let employesZone = [];
     for (let i = 0; i < Employes.length; i++) {
@@ -441,11 +423,9 @@ function getEmployesDeZone(zoneId) {
     return employesZone;
 }
 
-
 function toggleZone(zoneElement) {
     zoneElement.classList.toggle('active');
 }
-
 
 function addExperienceField() {
     experienceCount++;
@@ -480,7 +460,6 @@ function addExperienceField() {
     container.appendChild(experienceDiv);
 }
 
-
 function validateExperienceDates(input) {
     const experienceItem = input.closest('.experience-item');
     const dateDebut = experienceItem.querySelector('.experience-from');
@@ -503,31 +482,30 @@ function validateExperienceDates(input) {
     return true;
 }
 
-
 function validateForm() {
     let isValid = true;
     
-    // Validation du nom
+    
     if (!validateNameRealTime(document.getElementById('employeeName'))) {
         isValid = false;
     }
     
-    // Validation du rôle
+  
     if (!validateRoleRealTime(document.getElementById('employeeRole'))) {
         isValid = false;
     }
     
-    // Validation de l'email
+  
     if (!validateEmailRealTime(document.getElementById('employeeEmail'))) {
         isValid = false;
     }
     
-    // Validation du téléphone
+
     if (!validatePhoneRealTime(document.getElementById('employeePhone'))) {
         isValid = false;
     }
     
-    // Validation des expériences
+
     let experienceItems = document.querySelectorAll('.experience-item');
     if (experienceItems.length === 0) {
         showError('experiencesError', 'Veuillez ajouter au moins une expérience.');
@@ -560,7 +538,7 @@ function validateForm() {
                 }
             }
             
-            // Validation des dates
+           
             if (!validateExperienceDates(from)) {
                 datesValid = false;
             }
@@ -598,7 +576,7 @@ function hideError(errorId) {
     }
 }
 
-// Fonction pour obtenir les employés non assignés
+
 function getEmployesNonAssignes() {
     let nonAssignes = [];
     for (let i = 0; i < Employes.length; i++) {
@@ -609,7 +587,7 @@ function getEmployesNonAssignes() {
     return nonAssignes;
 }
 
-// Fonction pour rechercher par ID
+
 function rechercherParId(id) {
     for (let i = 0; i < Employes.length; i++) {
         if (Employes[i].id === id) {
@@ -619,7 +597,7 @@ function rechercherParId(id) {
     return null;
 }
 
-// Fonction pour obtenir la classe CSS selon le rôle
+
 function getRoleClass(role) {
     switch(role) {
         case 'Réceptionniste': return 'role-receptionist';
@@ -632,7 +610,6 @@ function getRoleClass(role) {
     }
 }
 
-// Fonction pour afficher les employés non assignés
 function afficherEmployesNonAssignes() {
     let container = document.getElementById('staff-list-container');
     if (!container) return;
@@ -648,7 +625,7 @@ function afficherEmployesNonAssignes() {
     for (let i = 0; i < nonAssignes.length; i++) {
         let employe = nonAssignes[i];
         html += '<div class="worker-card" onclick="showProfile(' + employe.id + ')">';
-        html += '<img src="' + employe.photo + '" alt="' + employe.nom + '" onerror="this.src=\'images/avatar.PNG\'">';
+        html += '<img src="' + employe.photo + '" alt="' + employe.nom + '" onerror="this.src=\'assets/images/avatar.PNG\'">';
         html += '<div class="worker-info">';
         html += '<h3>' + employe.nom + '</h3>';
         html += '<p>' + employe.email + '</p>';
@@ -660,7 +637,7 @@ function afficherEmployesNonAssignes() {
     container.innerHTML = html;
 }
 
-// Fonction pour afficher le profil d'un employé
+
 function showProfile(employeId) {
     let employe = rechercherParId(employeId);
     if (!employe) return;
@@ -700,30 +677,28 @@ function showProfile(employeId) {
     document.getElementById('profileModal').style.display = 'block';
 }
 
-// Fonction pour fermer le modal de profil
+
 function closeProfile() {
     document.getElementById('profileModal').style.display = 'none';
 }
 
-// Fonction pour ouvrir le modal d'ajout
+
 function ouvrirModal() {
     document.getElementById('addEmployeeModal').style.display = 'block';
     document.getElementById('employeeForm').reset();
     
-    // Réinitialiser l'image à l'image par défaut
-    uploadedImageUrl = 'images/avatar.PNG';
+   
+    uploadedImageUrl = 'assets/images/avatar.PNG';
     const photoPreview = document.getElementById('photoPreview');
     const photoNote = document.querySelector('.photo-note');
     
-    photoPreview.src = 'images/avatar.PNG';
+    photoPreview.src = 'assets/images/avatar.PNG';
     photoPreview.style.display = 'block';
     photoNote.textContent = 'Photo par défaut';
     photoNote.style.background = '#3498db';
     
-    // Réinitialiser l'input URL
     document.getElementById('photoUrl').value = '';
-    
-    // Réinitialiser les bordures
+
     document.getElementById('employeeName').style.borderColor = '';
     document.getElementById('employeeRole').style.borderColor = '';
     document.getElementById('employeeEmail').style.borderColor = '';
@@ -743,14 +718,14 @@ function hideAllErrors() {
     }
 }
 
-// Fonction pour fermer le modal d'ajout
+
 function fermerModal() {
     document.getElementById('addEmployeeModal').style.display = 'none';
-    uploadedImageUrl = 'images/avatar.PNG';
+    uploadedImageUrl = 'assets/images/avatar.PNG';
     hideAllErrors();
 }
 
-// Fonction pour soumettre le formulaire
+
 function soumettreFormulaire(event) {
     event.preventDefault();
     
@@ -762,7 +737,7 @@ function soumettreFormulaire(event) {
     let role = document.getElementById('employeeRole').value;
     let email = document.getElementById('employeeEmail').value;
     let telephone = document.getElementById('employeePhone').value;
-    let photoUrl = document.getElementById('photoUrl').value || 'images/avatar.PNG';
+    let photoUrl = document.getElementById('photoUrl').value || 'assets/images/avatar.PNG';
     
     let experiences = [];
     let experienceItems = document.querySelectorAll('.experience-item');
@@ -805,7 +780,7 @@ function soumettreFormulaire(event) {
     alert('Employé ajouté avec succès !');
 }
 
-// Initialisation
+
 document.addEventListener('DOMContentLoaded', function() {
     afficherEmployesNonAssignes();
     afficherEmployesDansZones();
@@ -835,7 +810,7 @@ document.addEventListener('DOMContentLoaded', function() {
         employeeForm.addEventListener('submit', soumettreFormulaire);
     }
     
-    // Ajouter les écouteurs d'événements pour la validation en temps réel
+   
     document.getElementById('employeeName').addEventListener('input', function() {
         validateNameRealTime(this);
     });
@@ -852,13 +827,13 @@ document.addEventListener('DOMContentLoaded', function() {
         validateRoleRealTime(this);
     });
     
-    // Ajouter l'écouteur d'événement pour l'input URL
+   
     let photoUrlInput = document.getElementById('photoUrl');
     if (photoUrlInput) {
         photoUrlInput.addEventListener('input', handleImageUrl);
     }
     
-    // Fermer les modals en cliquant en dehors
+   
     window.addEventListener('click', function(event) {
         if (event.target === document.getElementById('addEmployeeModal')) {
             fermerModal();
@@ -872,7 +847,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Rendre les fonctions accessibles depuis le HTML
+
 window.handleImageUrl = handleImageUrl;
 window.toggleZone = toggleZone;
 window.addExperienceField = addExperienceField;

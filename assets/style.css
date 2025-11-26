@@ -751,7 +751,7 @@ body {
     background: burlywood;
 }
 
-/* Badges de rôle */
+
 .role-badge {
     padding: 6px 12px;
     border-radius: 20px;
@@ -769,7 +769,7 @@ body {
 .role-cleaning { background: #95a5a6; }
 .role-default { background: #7f8c8d; }
 
-/* Profile Modal amélioré */
+
 .profile-modal {
     display: none;
     position: fixed;
@@ -804,7 +804,7 @@ body {
     text-align: center;
 }
 
-/* Image de profil en cercle avec fond dégradé */
+
 .profile-header img {
     width: 100px;
     height: 100px;
@@ -931,7 +931,7 @@ body {
     color: #8B4513;
 }
 
-/* Styles pour les employés assignés */
+
 .assigned-employee {
     display: flex;
     align-items: center;
@@ -980,7 +980,7 @@ body {
     background: #A0522D;
 }
 
-/* Scrollbar pour la liste d'expériences */
+
 .experience-list::-webkit-scrollbar {
     width: 6px;
 }
@@ -1008,7 +1008,7 @@ body {
     border-radius: 8px;
 }
 
-/* Modal d'assignation */
+
 #assignmentModal {
     display: none;
     position: fixed;
@@ -1074,7 +1074,7 @@ body {
     color: #7f8c8d;
 }
 
-/* Image par défaut stylisée */
+
 .default-avatar {
     width: 100%;
     height: 100%;
@@ -1088,9 +1088,6 @@ body {
     font-size: 14px;
 }
 
-/* ==================== */
-/* RESPONSIVE MOBILE */
-/* ==================== */
 
 @media (max-width: 768px) {
     .container {
@@ -1129,7 +1126,7 @@ body {
         overflow: visible;
     }
     
-    /* Zones avec 300px de height sur mobile */
+  
     .Salle_de_Conférence,
     .Reception,
     .Salle_dArchives,
@@ -1148,7 +1145,7 @@ body {
         display: none;
     }
     
-    /* SCROLL DANS LES ZONES */
+   
     .staff-here {
         flex: 1;
         max-height: 200px;
@@ -1157,7 +1154,7 @@ body {
         overflow-x: hidden;
     }
     
-    /* SCROLL DANS LES CARTES EMPLOYÉS */
+    
     .staff-list-container {
         flex: 1;
         max-height: 250px;
@@ -1165,7 +1162,7 @@ body {
         display: block;
     }
     
-    /* Assurer que le scroll fonctionne */
+ 
     .staff-list-container,
     .staff-here {
         -webkit-overflow-scrolling: touch;
@@ -1192,7 +1189,7 @@ body {
         flex-shrink: 0;
     }
 
-    /* CORRECTION DES MODALS POUR MOBILE */
+   
     .modal {
         display: none;
         position: fixed;
@@ -1273,7 +1270,7 @@ body {
         flex-direction: column;
     }
     
-    /* SCROLL FORCÉ DANS LES CARTES */
+ 
     .staff-list-container {
         flex: 1;
         max-height: 200px;
@@ -1293,7 +1290,7 @@ body {
     }
 }
 
-/* Pour les très petits écrans */
+
 @media (max-width: 360px) {
     .floor-plan {
         gap: 10px;
@@ -1320,7 +1317,6 @@ body {
     }
 }
 
-/* STYLES DE SCROLL GÉNÉRAUX */
 .staff-list-container {
     overflow-y: auto;
 }
@@ -1329,7 +1325,7 @@ body {
     overflow-y: auto;
 }
 
-/* Assurer que le scroll est toujours activé sur mobile */
+
 @media (max-width: 768px) {
     .staff-list-container,
     .staff-here {
@@ -1337,7 +1333,7 @@ body {
         -webkit-overflow-scrolling: touch;
     }
     
-    /* Forcer le scroll même si peu de contenu */
+   
     .staff-list-container {
         min-height: 200px;
     }
@@ -1345,4 +1341,20 @@ body {
     .staff-here {
         min-height: 150px;
     }
+}
+
+.Reception,
+.Salle_dArchives,
+.Salle_de_sécurité,
+.Salle_des_serveurs {
+    background: rgba(231, 76, 60, 0.15) !important;
+    border: 2px solid #e74c3c !important;
+}
+
+.Reception.has-employees,
+.Salle_dArchives.has-employees,
+.Salle_de_sécurité.has-employees,
+.Salle_des_serveurs.has-employees {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid transparent !important;
 }
