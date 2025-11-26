@@ -21,7 +21,7 @@ body {
     overflow: hidden;
 }
 
-/* SIDEBAR */
+
 .logo-container {
     text-align: center;
     margin-bottom: 20px;
@@ -74,7 +74,7 @@ body {
     font-size: 16px;
 }
 
-/* Scroll pour la sidebar */
+
 .staff-list-container {
     overflow-y: auto;
     flex: 1;
@@ -100,9 +100,9 @@ body {
     width: 100%;
     height: 80vh;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1fr 1fr;
+    grid-template-columns: 1fr 150px 1fr 1fr;
     grid-template-rows: repeat(3, 1fr);
-    margin-top: -10px;
+    margin-top: -40px;
     background-image: url('images/workspace.jpg');
     background-size: contain;
     background-position: center;
@@ -115,7 +115,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* ZONES */
+
 .zone {
     padding: 10px;
     display: flex;
@@ -139,17 +139,17 @@ body {
 .Salle_de_Conférence {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-    width: 410px;
-    height: 210px;
+    width: 350px;
+    height: 190px;
     background: rgba(231, 76, 60, 0);
-    margin-top: 10px; 
+    margin-top: 50px; 
 }
 
 .Reception {
     grid-column: 1 / 2;
     grid-row: 2 / 4;
     background: rgba(155, 89, 182, 0);
-    height: 400px;
+    height: 350px;
 }
 
 .couloire_1 {
@@ -165,15 +165,18 @@ body {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
     background: rgba(241, 196, 15, 0);
-    margin-top: 20px;
-    height: 210px;
+    margin-top: 40px;
+    height: 200px;
+    width: 100%;
+    
+    
 }
 
 .Salle_de_sécurité {
     grid-column: 4 / 5;
     grid-row: 1 / 2;
     background: rgba(46, 204, 113, 0);
-    margin-top: 20px;
+    margin-top: 35px;
     height: 210px;
 }
 
@@ -190,6 +193,7 @@ body {
     grid-row: 3 / 4;
     background: rgba(230, 126, 34, 0);
     height: 190px;
+    margin-top: -50px;
 }
 
 .Salle_des_serveurs {
@@ -197,6 +201,7 @@ body {
     grid-row: 3 / 4;
     background: rgba(52, 152, 219, 0);
     height: 190px;
+    margin-top: -50px;
 }
 
 .Salle_de_Conférence.active {
@@ -218,7 +223,7 @@ body {
     background: rgba(230, 126, 34, 0.85);
 }
 
-/* Style pour l'en-tête de zone avec le bouton */
+
 .zone-header {
     display: flex;
     align-items: center;
@@ -244,7 +249,7 @@ body {
     border: 2px solid white;
 }
 
-/* Bouton d'ajout dans les zones - NOUVEAU STYLE */
+
 .add-to-zone-btn {
     width: 30px;
     height: 30px;
@@ -278,7 +283,7 @@ body {
     transform: none;
 }
 
-/* SCROLL POUR LES ZONES */
+
 .staff-here {
     flex: 1;
     padding: 10px;
@@ -312,7 +317,7 @@ body {
     background: rgba(255, 255, 255, 0.5);
 }
 
-/* STYLES AMÉLIORÉS POUR LES IMAGES EN CERCLE */
+
 .worker-card {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
@@ -333,7 +338,7 @@ body {
     border-color: burlywood;
 }
 
-/* Image de profil en cercle avec fond dégradé */
+
 .worker-card img {
     width: 60px;
     height: 60px;
@@ -375,7 +380,7 @@ body {
     border-radius: 8px;
 }
 
-/* Modals - CORRECTION POUR LE RESPONSIVE */
+
 .modal {
     display: none;
     position: fixed;
@@ -432,7 +437,7 @@ body {
     text-align: center;
 }
 
-/* MODIFICATION PRINCIPALE : TOUS LES CHAMPS EN COLONNE */
+
 .form-row {
     display: flex;
     flex-direction: column;
@@ -479,7 +484,7 @@ body {
     display: none;
 }
 
-/* MODIFICATION : BOUTONS PLUS PETITS ET CÔTE À CÔTE */
+
 .form-buttons {
     display: flex;
     flex-direction: row;
@@ -530,7 +535,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* STYLES AMÉLIORÉS POUR L'APERÇU PHOTO EN CERCLE */
+
 .photo-url-container {
     display: flex;
     flex-direction: column;

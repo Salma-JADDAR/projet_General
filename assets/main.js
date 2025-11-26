@@ -1,45 +1,44 @@
-// Tableau global pour tous les employés
 let Employes = [
-    {id: 1, nom: "Salma JADDAR", role: "AutreRole", photo: "images/SALMA.PNG", email: "salma@gmail.com", telephone: "+212612345678", experiences: [
+    {id: 1, nom: "Salma JADDAR", role: "AutreRole", photo: "assets/images/SALMA.PNG", email: "salma@gmail.com", telephone: "+212612345678", experiences: [
         {entreprise: "Tech Corp", role: "Développeur", dateDebut: "2020-01-15", dateFin: "2022-03-20"},
         {entreprise: "Web Solutions", role: "Lead Dev", dateDebut: "2022-04-01", dateFin: "2023-12-31"}
     ], zoneAssignee: null},
-    {id: 2, nom: "Ilyass ABSI", role: "AutreRole", photo: "images/jean.PNG", email: "ilyass@gmail.com", telephone: "+212712345678", experiences: [
+    {id: 2, nom: "Ilyass ABSI", role: "AutreRole", photo: "assets/images/jean.PNG", email: "ilyass@gmail.com", telephone: "+212712345678", experiences: [
         {entreprise: "Design Studio", role: "UX Designer", dateDebut: "2019-06-01", dateFin: "2021-08-15"}
     ], zoneAssignee: null},
-    {id: 3, nom: "Rayhana BENSATRA", role: "Manager", photo: "images/rayhana.PNG", email: "rayhana@gmail.com", telephone: "+212612345679", experiences: [
+    {id: 3, nom: "Rayhana BENSATRA", role: "Manager", photo: "assets/images/rayhana.PNG", email: "rayhana@gmail.com", telephone: "+212612345679", experiences: [
         {entreprise: "Business Corp", role: "Team Lead", dateDebut: "2018-03-01", dateFin: "2020-02-28"}
     ], zoneAssignee: null},
-    {id: 4, nom: "Ibrahim RZIQUI", role: "AutreRole", photo: "images/ibrahim.PNG", email: "ibrahim@gmail.com", telephone: "0612345678", experiences: [
+    {id: 4, nom: "Ibrahim RZIQUI", role: "AutreRole", photo: "assets/images/ibrahim.PNG", email: "ibrahim@gmail.com", telephone: "0612345678", experiences: [
         {entreprise: "Marketing Pro", role: "SEO Specialist", dateDebut: "2021-01-10", dateFin: "2023-06-30"}
     ], zoneAssignee: "Salle_de_Conférence"},
-    {id: 5, nom: "Salim JADDAR", role: "AutreRole", photo: "images/jean.PNG", email: "salim@gmail.com", telephone: "071234567", experiences: [
+    {id: 5, nom: "Salim JADDAR", role: "AutreRole", photo: "assets/images/jean.PNG", email: "salim@gmail.com", telephone: "071234567", experiences: [
         {entreprise: "Sales Company", role: "Commercial", dateDebut: "2020-09-01", dateFin: "2022-11-15"}
     ], zoneAssignee: null},
-    {id: 6, nom: "Salma BENALI", role: "Réceptionniste", photo: "images/salouma.PNG", email: "salouma@gmail.com", telephone: "00212612345680", experiences: [
+    {id: 6, nom: "Salma BENALI", role: "Réceptionniste", photo: "assets/images/salouma.PNG", email: "salouma@gmail.com", telephone: "00212612345680", experiences: [
         {entreprise: "Hotel Plaza", role: "Réceptionniste", dateDebut: "2019-11-01", dateFin: "2021-12-31"}
     ], zoneAssignee: null},
-    {id: 7, nom: "Karim TECHNIQUE", role: "Technicien IT", photo: "images/karim.PNG", email: "karim@gmail.com", telephone: "+212612345681", experiences: [
+    {id: 7, nom: "Karim TECHNIQUE", role: "Technicien IT", photo: "assets/images/karim.PNG", email: "karim@gmail.com", telephone: "+212612345681", experiences: [
         {entreprise: "IT Services", role: "Technicien", dateDebut: "2020-03-15", dateFin: "2022-07-20"}
     ], zoneAssignee: null},
-    {id: 8, nom: "Mohamed SECURITE", role: "Agent de sécurité", photo: "images/mohamed.PNG", email: "mohamed@gmail.com", telephone: "0612345682", experiences: [
+    {id: 8, nom: "Mohamed SECURITE", role: "Agent de sécurité", photo: "assets/images/mohamed.PNG", email: "mohamed@gmail.com", telephone: "0612345682", experiences: [
         {entreprise: "Securitas", role: "Agent", dateDebut: "2018-05-01", dateFin: "2020-04-30"}
     ], zoneAssignee: null},
-    {id: 9, nom: "Fatima NETTOYAGE", role: "Nettoyage", photo: "images/fatima.PNG", email: "fatima@gmail.com", telephone: "+212712345683", experiences: [
+    {id: 9, nom: "Fatima NETTOYAGE", role: "Nettoyage", photo: "assets/images/fatima.PNG", email: "fatima@gmail.com", telephone: "+212712345683", experiences: [
         {entreprise: "Clean Pro", role: "Agent d'entretien", dateDebut: "2021-02-01", dateFin: "2023-01-31"}
     ], zoneAssignee: null},
-    {id: 10, nom: "Leila DEVELOPPEUSE", role: "AutreRole", photo: "images/leila.PNG", email: "leila@gmail.com", telephone: "071234568", experiences: [
+    {id: 10, nom: "Leila DEVELOPPEUSE", role: "AutreRole", photo: "assets/images/leila.PNG", email: "leila@gmail.com", telephone: "071234568", experiences: [
         {entreprise: "Dev Company", role: "Développeuse", dateDebut: "2019-07-01", dateFin: "2021-09-30"}
     ], zoneAssignee: null},
-    {id: 11, nom: "Ahmed CODEUR", role: "AutreRole", photo: "images/ahmed.PNG", email: "ahmed@gmail.com", telephone: "00212612345684", experiences: [
+    {id: 11, nom: "Ahmed CODEUR", role: "AutreRole", photo: "assets/images/ahmed.PNG", email: "ahmed@gmail.com", telephone: "00212612345684", experiences: [
         {entreprise: "Code Masters", role: "Ingénieur", dateDebut: "2020-04-01", dateFin: "2022-08-15"}
     ], zoneAssignee: null},
-    {id: 12, nom: "Sophie CREATIVE", role: "AutreRole", photo: "images/sophie.PNG", email: "sophie@gmail.com", telephone: "+212612345685", experiences: [
+    {id: 12, nom: "Sophie CREATIVE", role: "AutreRole", photo: "assets/images/sophie.PNG", email: "sophie@gmail.com", telephone: "+212612345685", experiences: [
         {entreprise: "Creative Agency", role: "Designer", dateDebut: "2021-01-15", dateFin: "2023-03-20"}
     ], zoneAssignee: null},
 ];
 
-// Tableau global pour tous les zones (6 zones)
+
 let Zones = [
     {
         id: "Salle_de_Conférence",
@@ -86,48 +85,46 @@ let Zones = [
 ];
 
 let experienceCount = 0;
-let uploadedImageUrl = 'images/avatar.PNG'; 
+let uploadedImageUrl = 'assets/images/avatar.PNG'; 
 let zoneSelectionnee = '';
 
-// Fonction pour valider le nom complet (lettres et espaces seulement)
+
 function validateFullName(name) {
     const nameRegex = /^[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]{2,}(?:\s+[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]{2,})+$/;
     return nameRegex.test(name);
 }
 
-// Fonction pour valider le numéro de téléphone marocain
+
 function validatePhoneNumber(phone) {
-    // Formats acceptés: +212, 00212, 0, suivi de 5 à 9 chiffres
-    const phoneRegex = /^(?:(?:\+|00)212|0)[5-9]\d{8}$/;
+   const phoneRegex = /^(?:(?:\+|00)212|0)[5-9]\d{8}$/;
     return phoneRegex.test(phone.replace(/\s/g, ''));
 }
 
-// Fonction pour valider l'email
+
 function validateEmail(email) {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(email);
 }
 
-// Fonction pour valider que le texte ne contient que des lettres
+
 function validateLettersOnly(text) {
     const lettersRegex = /^[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]*$/;
     return lettersRegex.test(text);
 }
 
-// Fonction pour valider que le texte ne contient que des chiffres
 function validateNumbersOnly(text) {
     const numbersRegex = /^[0-9]*$/;
     return numbersRegex.test(text);
 }
 
-// Fonction pour gérer l'URL de l'image
+
 function handleImageUrl() {
     const photoUrl = document.getElementById('photoUrl').value;
     const photoPreview = document.getElementById('photoPreview');
     const photoNote = document.querySelector('.photo-note');
     
     if (photoUrl) {
-        // Créer une nouvelle image pour tester le chargement
+        
         const img = new Image();
         img.onload = function() {
             photoPreview.src = photoUrl;
@@ -137,8 +134,8 @@ function handleImageUrl() {
             uploadedImageUrl = photoUrl;
         };
         img.onerror = function() {
-            // Si l'URL n'est pas valide, utiliser l'image par défaut
-            photoPreview.src = 'images/avatar.PNG';
+            
+            photoPreview.src = 'assets/images/avatar.PNG';
             photoPreview.style.display = 'block';
             photoNote.textContent = 'URL invalide - Photo par défaut utilisée';
             photoNote.style.background = '#e74c3c';
@@ -146,16 +143,16 @@ function handleImageUrl() {
         };
         img.src = photoUrl;
     } else {
-        // URL vide, utiliser l'image par défaut
+     
         photoPreview.src = 'images/avatar.PNG';
         photoPreview.style.display = 'block';
         photoNote.textContent = 'Photo par défaut';
-        photoNote.style.background = '#3498db';
+        photoNote.style.background = 'burlywood';
         uploadedImageUrl = 'images/avatar.PNG';
     }
 }
 
-// Validation en temps réel pour le nom
+
 function validateNameRealTime(input) {
     const value = input.value.trim();
     const errorElement = document.getElementById('nameError');
@@ -192,7 +189,7 @@ function validateNameRealTime(input) {
     }
 }
 
-// Validation en temps réel pour l'email
+
 function validateEmailRealTime(input) {
     const value = input.value.trim();
     const errorElement = document.getElementById('emailError');
@@ -212,7 +209,6 @@ function validateEmailRealTime(input) {
     }
 }
 
-// Validation en temps réel pour le téléphone
 function validatePhoneRealTime(input) {
     const value = input.value.trim();
     const errorElement = document.getElementById('phoneError');
@@ -236,7 +232,7 @@ function validatePhoneRealTime(input) {
     }
 }
 
-// Validation en temps réel pour le rôle
+
 function validateRoleRealTime(input) {
     const value = input.value;
     const errorElement = document.getElementById('roleError');
@@ -252,7 +248,7 @@ function validateRoleRealTime(input) {
     }
 }
 
-// Validation en temps réel pour les champs d'expérience (entreprise et rôle)
+
 function validateExperienceRealTime(input) {
     const value = input.value.trim();
     
@@ -271,7 +267,7 @@ function validateExperienceRealTime(input) {
     return true;
 }
 
-// Fonction pour vérifier si un rôle est autorisé dans une zone
+
 function AutorisationAuZone(role, zoneId) {
     for (let i = 0; i < Zones.length; i++) {
         if (Zones[i].id === zoneId) {
@@ -287,7 +283,7 @@ function AutorisationAuZone(role, zoneId) {
     return false;
 }
 
-// Fonction pour obtenir les employés éligibles pour une zone
+
 function CandidatsPourZone(zoneId) {
     let employesadapteAuZone = [];
     for (let i = 0; i < Employes.length; i++) {
@@ -298,7 +294,7 @@ function CandidatsPourZone(zoneId) {
     return employesadapteAuZone;
 }
 
-// Fonction pour obtenir le nom d'une zone
+
 function NomDeZone(zoneId) {
     for (let i = 0; i < Zones.length; i++) {
         if (Zones[i].id === zoneId) {
@@ -308,7 +304,7 @@ function NomDeZone(zoneId) {
     return zoneId;
 }
 
-// Fonction pour ouvrir la modal d'assignation
+
 function ModalAffectation(zoneId) {
     zoneSelectionnee = zoneId;
     let modal = document.getElementById('assignmentModal');
@@ -337,7 +333,7 @@ function ModalAffectation(zoneId) {
     modal.style.display = 'block';
 }
 
-// Fonction pour assigner un employé à une zone
+
 function EmployeeAssingner(employeId) {
     for (let i = 0; i < Employes.length; i++) {
         if (Employes[i].id === employeId) {
@@ -351,7 +347,7 @@ function EmployeeAssingner(employeId) {
     afficherEmployesDansZones();
 }
 
-// Fonction pour désassigner un employé
+
 function EmployeeNoAssingner(employeId) {
     for (let i = 0; i < Employes.length; i++) {
         if (Employes[i].id === employeId) {
@@ -364,13 +360,13 @@ function EmployeeNoAssingner(employeId) {
     afficherEmployesDansZones();
 }
 
-// Fonction pour fermer la modal d'assignation
+
 function FermerModal() {
     document.getElementById('assignmentModal').style.display = 'none';
     zoneSelectionnee = '';
 }
 
-// Fonction pour afficher les employés dans les zones
+
 function afficherEmployesDansZones() {
     for (let i = 0; i < Zones.length; i++) {
         let zoneId = Zones[i].id;
@@ -379,7 +375,7 @@ function afficherEmployesDansZones() {
             let staffHereElement = zoneElement.querySelector('.staff-here');
             let employesDansZone = getEmployesDeZone(zoneId);
             
-            // Mettre à jour l'en-tête de la zone avec le bouton
+         
             let zoneHeader = zoneElement.querySelector('.zone-header');
             if (!zoneHeader) {
                 zoneHeader = document.createElement('div');
@@ -390,7 +386,7 @@ function afficherEmployesDansZones() {
             let capacite = employesDansZone.length;
             let capaciteMax = Zones[i].capaciteMax;
             
-            // Créer ou mettre à jour le bouton
+        
             let addButton = zoneHeader.querySelector('.add-to-zone-btn');
             if (!addButton) {
                 addButton = document.createElement('button');
@@ -400,7 +396,7 @@ function afficherEmployesDansZones() {
                 zoneHeader.insertBefore(addButton, zoneHeader.firstChild);
             }
             
-            // Créer ou mettre à jour le titre
+          
             let zoneTitle = zoneHeader.querySelector('.zone-title');
             if (!zoneTitle) {
                 zoneTitle = document.createElement('h3');
@@ -409,7 +405,6 @@ function afficherEmployesDansZones() {
             }
             zoneTitle.textContent = Zones[i].nom;
             
-            // Désactiver le bouton si capacité max atteinte
             if (capacite >= capaciteMax) {
                 addButton.disabled = true;
                 addButton.title = 'Capacité maximale atteinte';
@@ -418,7 +413,7 @@ function afficherEmployesDansZones() {
                 addButton.title = 'Ajouter un employé';
             }
             
-            // Afficher les employés assignés
+         
             let AFFICHE = '';
             if (employesDansZone.length > 0) {
                 for (let j = 0; j < employesDansZone.length; j++) {
@@ -435,7 +430,7 @@ function afficherEmployesDansZones() {
     }
 }
 
-// Fonction pour obtenir les employés d'une zone
+
 function getEmployesDeZone(zoneId) {
     let employesZone = [];
     for (let i = 0; i < Employes.length; i++) {
@@ -446,12 +441,12 @@ function getEmployesDeZone(zoneId) {
     return employesZone;
 }
 
-// Fonction pour basculer l'état actif d'une zone
+
 function toggleZone(zoneElement) {
     zoneElement.classList.toggle('active');
 }
 
-// Fonction pour ajouter un champ d'expérience
+
 function addExperienceField() {
     experienceCount++;
     let container = document.getElementById('experiencesContainer');
@@ -485,7 +480,7 @@ function addExperienceField() {
     container.appendChild(experienceDiv);
 }
 
-// Fonction pour valider les dates d'expérience
+
 function validateExperienceDates(input) {
     const experienceItem = input.closest('.experience-item');
     const dateDebut = experienceItem.querySelector('.experience-from');
@@ -508,7 +503,7 @@ function validateExperienceDates(input) {
     return true;
 }
 
-// Fonctions de validation
+
 function validateForm() {
     let isValid = true;
     
