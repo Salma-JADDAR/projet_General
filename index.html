@@ -3,58 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Bureau - Système Walkin</title>
+    <title>Plan Bureau</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <h2>Personnel Non Assigné</h2>
+          
+            <div class="logo-container">
+                <img src="images/Capture.PNG" alt="Logo" class="sidebar-logo">
+            </div>
+           
             <button class="add-btn">Ajouter Employé</button>
             <div class="staff-list-container" id="staff-list-container">
-                <!-- Les employés non assignés apparaîtront ici -->
+             
             </div>
         </div>
         
         <div class="main-area">
-            <h1>Plan d'Étage</h1>
             <div class="floor-plan">
                 <div class="zone Salle_de_Conférence" onclick="toggleZone(this)">
-                    <h3>Salle de Conférence</h3>
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone Reception" onclick="toggleZone(this)">
-                    <h3>Réception</h3>
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone couloire_1">
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone Salle_dArchives" onclick="toggleZone(this)">
-                    <h3>Salle d'Archives</h3>
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone Salle_de_sécurité" onclick="toggleZone(this)">
-                    <h3>Salle de sécurité</h3>
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone couloire_2">
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone Salle_du_Personnel" onclick="toggleZone(this)">
-                    <h3>Salle du Personnel</h3>
                     <div class="staff-here"></div>
                 </div>
                 <div class="zone Salle_des_serveurs" onclick="toggleZone(this)">
-                    <h3>Salle des serveurs</h3>
                     <div class="staff-here"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Ajouter Employé -->
+   
     <div id="addEmployeeModal" class="modal">
         <div class="modal-content large-modal">
             <span class="close">&times;</span>
@@ -62,22 +59,17 @@
             <form id="employeeForm">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="employeeName">Nom complet *</label>
-                        <input type="text" id="employeeName" required 
-                               pattern="[A-Za-zÀ-ÿ\s]{2,}(?:\s[A-Za-zÀ-ÿ\s]{2,}){1,}"
-                               title="Le nom doit contenir au moins 2 mots avec des lettres uniquement">
+                        <label for="employeeName">Nom complet </label>
+                        <input type="text" id="employeeName" required >
                         <span class="error-message" id="nameError"></span>
                     </div>
-                    
+                    <br>
                     <div class="form-group">
-                        <label for="employeeRole">Rôle *</label>
+                        <label for="employeeRole">Rôle </label>
                         <select id="employeeRole" required>
                             <option value="">Sélectionnez un rôle</option>
-                            <option value="Développeur">Développeur</option>
-                            <option value="Designer">Designer</option>
+                            <option value="AutreRole">Autre Role</option>
                             <option value="Manager">Manager</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Commercial">Commercial</option>
                             <option value="Réceptionniste">Réceptionniste</option>
                             <option value="Technicien IT">Technicien IT</option>
                             <option value="Agent de sécurité">Agent de sécurité</option>
@@ -86,45 +78,44 @@
                         <span class="error-message" id="roleError"></span>
                     </div>
                 </div>
-                
+                <br>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="employeeEmail">Email *</label>
+                        <label for="employeeEmail">Email </label>
                         <input type="email" id="employeeEmail" required 
                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                                title="Entrez une adresse email valide">
                         <span class="error-message" id="emailError"></span>
                     </div>
-                    
+                    <br>
                     <div class="form-group">
-                        <label for="employeePhone">Téléphone *</label>
+                        <label for="employeePhone">Téléphone </label>
                         <input type="tel" id="employeePhone" required 
                                pattern="[\+]?[0-9\s\-\(\)]{10,20}"
                                title="Entrez un numéro de téléphone valide">
                         <span class="error-message" id="phoneError"></span>
                     </div>
                 </div>
-                
+                <br>
                 <div class="form-group photo-group">
-                    <label for="photoUpload">Photo de profil *</label>
-                    <div class="photo-upload-container">
+                    <label for="photoUrl">Photo de profil</label>
+                    <div class="photo-url-container">
                         <div class="photo-preview">
-                            <img id="photoPreview" src="" alt="Aperçu photo">
-                            <span class="no-photo">Aucune photo sélectionnée</span>
+                            <img id="photoPreview" src="images/avatar.PNG" alt="Aperçu photo">
+                            <div class="photo-note">Photo par défaut</div>
                         </div>
-                        <div class="file-input-wrapper">
-                            <input type="file" id="photoUpload" accept="image/*" required 
-                                   onchange="handleImageUpload(event)">
-                            <span class="file-input-label">Choisir une image</span>
+                        <div class="url-input-wrapper">
+                            <input type="url" id="photoUrl" 
+                                   placeholder="https://exemple.com/photo.jpg"
+                                   title="Entrez l'URL de la photo">
                         </div>
                     </div>
-                    <span class="error-message" id="photoError"></span>
                 </div>
-                
+                <br>
                 <div class="form-group experiences-group">
-                    <label>Expériences professionnelles *</label>
+                    <label>Expériences professionnelles </label>
                     <div id="experiencesContainer" class="experiences-container">
-                        <!-- Les expériences seront ajoutées ici dynamiquement -->
+                       
                     </div>
                     <button type="button" class="add-experience-btn" onclick="addExperienceField()">
                         + Ajouter une expérience
@@ -140,32 +131,44 @@
         </div>
     </div>
 
-    <!-- Modal Profil Employé -->
+  
     <div id="profileModal" class="profile-modal">
         <div class="profile-content">
             <span class="close-profile">&times;</span>
             <div class="profile-header">
-                <img id="profilePhoto" src="" alt="Photo de profil">
+                <div class="profile-photo-container">
+                    <img id="profilePhoto" src="" alt="Photo de profil">
+                </div>
                 <div class="profile-details">
                     <h2 id="profileName"></h2>
-                    <p id="profileEmail"></p>
-                    <p id="profilePhone"></p>
+                    <div class="profile-contact">
+                        <div class="contact-item email">
+                            <span id="profileEmail"></span>
+                        </div>
+                        <div class="contact-item phone">
+                            <span id="profilePhone"></span>
+                        </div>
+                    </div>
                     <span id="profileRole" class="role-badge"></span>
                 </div>
             </div>
-            <div class="profile-experiences">
-                <h4>Expériences</h4>
-                <div id="profileExperiences" class="experience-list"></div>
+            <div class="profile-body">
+                <div class="profile-section">
+                    <h4>Expériences Professionnelles</h4>
+                    <div id="profileExperiences" class="experience-list">
+                       
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Assignation -->
+
     <div id="assignmentModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="fermerModalAffectation()">&times;</span>
+            <span class="close" onclick="FermerModal()">&times;</span>
             <div id="assignmentModalContent">
-                <!-- Contenu de la modal d'assignation -->
+                
             </div>
         </div>
     </div>
