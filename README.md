@@ -52,7 +52,7 @@ Le projet met l’accent sur :
 |--------------|------------------|----------------------|
 | Langage      | JavaScript (ES6+) | DOM, logique métier, validation |
 | Structure    | HTML5            | Structure de l’application |
-| Design / CSS | Tailwind CSS     | UI moderne, responsive (Flexbox / Grid) |
+| Design / CSS | CSS              | UI moderne, responsive (Flexbox / Grid) |
 | Versioning   | Git / GitHub     | Gestion du code source et déploiement |
 
 ---
@@ -62,5 +62,5 @@ Le projet met l’accent sur :
 📧 *salmajaddar7@gmail.com*  
 
 
----
+
 
