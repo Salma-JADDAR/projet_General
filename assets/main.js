@@ -88,7 +88,7 @@ let uploadedImageUrl = 'assets/images/avatar.PNG';
 let zoneSelectionnee = '';
 
 function validateFullName(name) {
-    const nameRegex = /^[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]{2,}(?:\s+[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]{2,})+$/;
+    const nameRegex = /^[a-zA-Z\s]{2,}(?:\s+[a-zA-Z\s]{2,})+$/;
     return nameRegex.test(name);
 }
 
@@ -103,7 +103,7 @@ function validateEmail(email) {
 }
 
 function validateLettersOnly(text) {
-    const lettersRegex = /^[a-zA-ZàâäéèêëïîôöùûüçÀÂÄÉÈÊËÏÎÔÖÙÛÜÇ\s]*$/;
+    const lettersRegex = /^[a-zA-Z\s]*$/;
     return lettersRegex.test(text);
 }
 
@@ -137,7 +137,7 @@ function handleImageUrl() {
     } else {
         photoPreview.src = 'assets/images/avatar.PNG';
         photoPreview.style.display = 'block';
-        photoNote.textContent = 'Photo par défaut';
+       
         photoNote.style.background = 'burlywood';
         uploadedImageUrl = 'assets/images/avatar.PNG';
     }
@@ -600,13 +600,13 @@ function rechercherParId(id) {
 
 function getRoleClass(role) {
     switch(role) {
-        case 'Réceptionniste': return 'role-receptionist';
-        case 'Technicien IT': return 'role-it';
-        case 'Agent de sécurité': return 'role-security';
-        case 'Manager': return 'role-manager';
-        case 'Nettoyage': return 'role-cleaning';
-        case 'AutreRole': return 'role-default';
-        default: return 'role-default';
+        case 'Réceptionniste': return 'resp';
+        case 'Technicien IT': return 'it'
+        case 'Agent de sécurité': return 'securityyyy';
+        case 'Manager': return 'manager';
+        case 'Nettoyage': return 'netoiyage';
+        case 'AutreRole': return 'autre';
+        default: return 'autre';
     }
 }
 
@@ -653,13 +653,13 @@ function showProfile(employeId) {
     
     let experiencesContainer = document.getElementById('profileExperiences');
     
-    // Vérifier s'il y a des expériences
+   
     if (employe.experiences && employe.experiences.length > 0) {
         let experiencesHTML = '';
         for (let i = 0; i < employe.experiences.length; i++) {
             let exp = employe.experiences[i];
             
-            // Formater les dates pour un affichage plus lisible
+     
             let dateDebut = new Date(exp.dateDebut).toLocaleDateString('fr-FR');
             let dateFin = new Date(exp.dateFin).toLocaleDateString('fr-FR');
             

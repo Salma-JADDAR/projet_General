@@ -762,12 +762,12 @@ body {
     color: white;
 }
 
-.role-receptionist { background: #9b59b6; }
-.role-it { background: #3498db; }
-.role-security { background: #e67e22; }
-.role-manager { background: #2ecc71; }
-.role-cleaning { background: #95a5a6; }
-.role-default { background: #7f8c8d; }
+.resp { background: #9b59b6; }
+.it { background: #3498db; }
+.securityyyy { background: #e67e22; }
+.manager { background: #2ecc71; }
+.netoiyage { background: #95a5a6; }
+.autre { background: #7f8c8d; }
 
 
 .profile-modal {
